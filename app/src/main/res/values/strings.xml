@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">BubbleSortRun</string>
+    <string name="start">Начать игру</string>
+    <string name="exit">Выйти</string>
+    <string name="name">BubbleSort\nRun</string>
+
 </resources>
