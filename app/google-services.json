@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "698468846623",
+    "project_id": "hitselka",
+    "storage_bucket": "hitselka.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:698468846623:android:926a05e32823126c19192a",
+        "android_client_info": {
+          "package_name": "com.tsu.hitselka"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "698468846623-eg53qitu7di67rp6r4bp4hds7m95tjr7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANrHC73ikVq0mQAjGR1eApxDcMb5xUTM8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "698468846623-eg53qitu7di67rp6r4bp4hds7m95tjr7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
