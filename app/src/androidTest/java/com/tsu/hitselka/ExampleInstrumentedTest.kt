@@ -1,4 +1,4 @@
-package com.tsu.bubblesortrun
+package com.tsu.hitselka
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

@@ -1,4 +1,4 @@
-package com.tsu.bubblesortrun
+package com.tsu.hitselka
 
 import org.junit.Test
 
