@@ -11,7 +11,7 @@ internal class DrawThread(private val surfaceHolder: SurfaceHolder, resources: R
     private val picture: Bitmap
     private val fatherFrost: Bitmap
     private val winterMaiden: Bitmap
-    private var prevTime: Long
+
     fun setRunning(run: Boolean) {
         runFlag = run
     }
@@ -24,7 +24,6 @@ internal class DrawThread(private val surfaceHolder: SurfaceHolder, resources: R
                 // получаем объект Canvas и выполняем отрисовку
                 canvas = surfaceHolder.lockCanvas(null)
                 synchronized(surfaceHolder) {
-                    canvas.drawColor(Color.BLACK)
                     canvas.drawBitmap(picture, 0f,0f, null)
                     canvas.drawBitmap(fatherFrost, 250f,250f, null)
                     canvas.drawBitmap(winterMaiden, 350f,350f, null)
@@ -53,7 +52,5 @@ internal class DrawThread(private val surfaceHolder: SurfaceHolder, resources: R
             resources,
             com.tsu.bubblesortrun.R.drawable.winter_maiden
         )
-        // сохраняем текущее время
-        prevTime = System.currentTimeMillis()
     }
 }

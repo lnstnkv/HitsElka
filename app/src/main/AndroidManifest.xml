@@ -13,8 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BubbleSortRun">
         <activity
-            android:name=".SurfaceView"
-            android:exported="true" />
+            android:name=".GameActivity"
+            android:exported="true"
+            android:screenOrientation="landscape"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
