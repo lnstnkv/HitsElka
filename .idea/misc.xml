@@ -4,8 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidStudioProjects/BubbleSortRun/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/drawable/profile_bg.xml" value="0.2484375" />
+        <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/drawable/profile_bg_color.xml" value="0.24583333333333332" />
+        <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/layout/activity_game.xml" value="0.2" />
         <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/layout/activity_main.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/layout/controls.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/layout/game_fragment.xml" value="0.23229166666666667" />
       </map>
     </option>
   </component>
