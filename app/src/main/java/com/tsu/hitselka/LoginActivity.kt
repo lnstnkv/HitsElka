@@ -48,7 +48,7 @@ class LoginActivity : AppCompatActivity(R.layout.activity_login) {
     private fun getClient(): GoogleSignInClient {
         val gso = GoogleSignInOptions
             .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestIdToken(getString(R.string.default_web_client_id)) // это визуальный баг, все работает
             .requestEmail()
             .build()
 
@@ -61,8 +61,8 @@ class LoginActivity : AppCompatActivity(R.layout.activity_login) {
     }
 
     private fun firebaseLogin(idToken: String) {
-        val credintials = GoogleAuthProvider.getCredential(idToken, null)
-        auth.signInWithCredential(credintials).addOnCompleteListener {
+        val credentials = GoogleAuthProvider.getCredential(idToken, null)
+        auth.signInWithCredential(credentials).addOnCompleteListener {
             if (it.isSuccessful) {
                 checkLoginState()
             } else {
@@ -73,7 +73,7 @@ class LoginActivity : AppCompatActivity(R.layout.activity_login) {
 
     private fun checkLoginState() {
         if (auth.currentUser != null) {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, GameActivity::class.java)
             startActivity(intent)
         }
     }

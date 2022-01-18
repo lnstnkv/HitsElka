@@ -1,4 +1,4 @@
-package com.tsu.bubblesortrun
+package com.tsu.hitselka
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
