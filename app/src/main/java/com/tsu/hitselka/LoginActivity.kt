@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -18,11 +21,15 @@ import com.tsu.hitselka.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity(R.layout.activity_login) {
     private val binding by lazy { ActivityLoginBinding.inflate(layoutInflater) }
-    lateinit var launcher: ActivityResultLauncher<Intent>
-    lateinit var auth: FirebaseAuth
+    private lateinit var launcher: ActivityResultLauncher<Intent>
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        hideSystemBars()
         super.onCreate(savedInstanceState)
+
+        auth = Firebase.auth
+        checkLoginState()
         setContentView(binding.root)
 
         launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -38,7 +45,6 @@ class LoginActivity : AppCompatActivity(R.layout.activity_login) {
                 Log.d("Auth", "Api exception")
             }
         }
-        auth = Firebase.auth
 
         binding.signInButton.setOnClickListener {
             login()
@@ -76,5 +82,15 @@ class LoginActivity : AppCompatActivity(R.layout.activity_login) {
             val intent = Intent(this, GameActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun hideSystemBars() {
+        val windowInsetsController =
+            ViewCompat.getWindowInsetsController(window.decorView) ?: return
+        // Configure the behavior of the hidden system bars
+        windowInsetsController.systemBarsBehavior =
+            WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        // Hide both the status bar and the navigation bar
+        windowInsetsController.hide(WindowInsetsCompat.Type.systemBars())
     }
 }

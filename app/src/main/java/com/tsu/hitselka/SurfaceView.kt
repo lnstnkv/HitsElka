@@ -35,8 +35,8 @@ class SurfaceView(context: Context) : SurfaceView(context), SurfaceHolder.Callba
     }
 
     init {
-        this.setZOrderOnTop(true);
-        this.holder.setFormat(PixelFormat.TRANSLUCENT);
+        this.setZOrderOnTop(true)
+        this.holder.setFormat(PixelFormat.TRANSLUCENT)
         holder.addCallback(this)
     }
 }

@@ -7,12 +7,23 @@
 
     <View
         android:id="@+id/profileBgView"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         android:layout_margin="16dp"
         android:background="@drawable/profile_bg"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/profileImageView"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:background="@drawable/profile_image"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@id/profileBgView"
+        app:layout_constraintEnd_toEndOf="@id/profileBgView"
+        app:layout_constraintStart_toStartOf="@id/profileBgView"
+        app:layout_constraintTop_toTopOf="@id/profileBgView" />
 
     <ImageView
         android:id="@+id/yearSelectorImageView"
@@ -21,26 +32,17 @@
         app:layout_constraintBottom_toTopOf="@id/achievementsImageView"
         app:layout_constraintEnd_toEndOf="@id/profileBgView"
         app:layout_constraintStart_toStartOf="@id/profileBgView"
-        app:layout_constraintTop_toBottomOf="@id/profileBgView" />
+        app:layout_constraintTop_toBottomOf="@id/profileBgView"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <ImageView
         android:id="@+id/achievementsImageView"
         style="@style/ActionImageView"
         android:src="@drawable/achievements"
-        app:layout_constraintBottom_toTopOf="@id/shopImageView"
-        app:layout_constraintEnd_toEndOf="@id/profileBgView"
-        app:layout_constraintStart_toStartOf="@id/profileBgView"
-        app:layout_constraintTop_toBottomOf="@id/yearSelectorImageView" />
-
-    <ImageView
-        android:id="@+id/shopImageView"
-        style="@style/ActionImageView"
-        android:layout_width="56dp"
-        android:src="@drawable/shop"
         app:layout_constraintBottom_toTopOf="@id/giftImageView"
         app:layout_constraintEnd_toEndOf="@id/profileBgView"
         app:layout_constraintStart_toStartOf="@id/profileBgView"
-        app:layout_constraintTop_toBottomOf="@id/achievementsImageView" />
+        app:layout_constraintTop_toBottomOf="@id/yearSelectorImageView" />
 
     <ImageView
         android:id="@+id/giftImageView"
@@ -49,15 +51,185 @@
         app:layout_constraintBottom_toTopOf="@id/wandView"
         app:layout_constraintEnd_toEndOf="@id/profileBgView"
         app:layout_constraintStart_toStartOf="@id/profileBgView"
-        app:layout_constraintTop_toBottomOf="@id/shopImageView" />
+        app:layout_constraintTop_toBottomOf="@id/achievementsImageView" />
 
     <View
         android:id="@+id/wandView"
-        android:layout_width="88dp"
-        android:layout_height="88dp"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
         android:layout_margin="16dp"
         android:background="@drawable/wand"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/settingsImageView"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/settings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/shopImageView"
+        android:layout_width="56dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/shop"
+        app:layout_constraintBottom_toTopOf="@id/playImageView"
+        app:layout_constraintEnd_toEndOf="@id/settingsImageView"
+        app:layout_constraintTop_toBottomOf="@id/settingsImageView" />
+
+    <ImageView
+        android:id="@+id/playImageView"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_margin="16dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/play"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+<!--    Level -->
+
+    <View
+        android:id="@+id/levelBgView"
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="32dp"
+        android:background="@drawable/label_bg"
+        app:layout_constraintBottom_toBottomOf="@id/levelImageView"
+        app:layout_constraintStart_toEndOf="@id/profileBgView"
+        app:layout_constraintTop_toTopOf="@id/levelImageView" />
+
+    <View
+        android:id="@+id/levelFillView"
+        android:layout_width="60dp"
+        android:layout_height="16dp"
+        android:background="@drawable/label_fill_bg"
+        app:layout_constraintBottom_toBottomOf="@id/levelBgView"
+        app:layout_constraintStart_toStartOf="@id/levelBgView"
+        app:layout_constraintTop_toTopOf="@id/levelBgView" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/LabelText"
+        android:text="1"
+        app:layout_constraintBottom_toBottomOf="@id/levelBgView"
+        app:layout_constraintEnd_toEndOf="@id/levelBgView"
+        app:layout_constraintStart_toEndOf="@id/levelImageView"
+        app:layout_constraintTop_toTopOf="@id/levelBgView" />
+
+    <ImageView
+        android:id="@+id/levelImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_margin="16dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/level_label"
+        app:layout_constraintStart_toEndOf="@id/profileBgView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+<!--    Wands -->
+
+    <View
+        android:id="@+id/wandBgView"
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="24dp"
+        android:background="@drawable/label_bg"
+        app:layout_constraintBottom_toBottomOf="@id/levelImageView"
+        app:layout_constraintStart_toEndOf="@id/levelBgView"
+        app:layout_constraintTop_toTopOf="@id/levelImageView" />
+
+    <TextView
+        android:id="@+id/levelTextView"
+        style="@style/LabelText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="@id/wandBgView"
+        app:layout_constraintEnd_toEndOf="@id/wandBgView"
+        app:layout_constraintStart_toEndOf="@id/wandImageView"
+        app:layout_constraintTop_toTopOf="@id/wandBgView" />
+
+    <ImageView
+        android:id="@+id/wandImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_margin="16dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/wand_label"
+        app:layout_constraintStart_toEndOf="@id/levelBgView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+<!--    Moneys -->
+
+    <View
+        android:id="@+id/moneyBgView"
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="32dp"
+        android:background="@drawable/label_bg"
+        app:layout_constraintBottom_toBottomOf="@id/moneyImageView"
+        app:layout_constraintStart_toEndOf="@id/wandBgView"
+        app:layout_constraintTop_toTopOf="@id/moneyImageView" />
+
+    <TextView
+        android:id="@+id/moneyTextView"
+        style="@style/LabelText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="@id/moneyBgView"
+        app:layout_constraintEnd_toEndOf="@id/moneyBgView"
+        app:layout_constraintStart_toEndOf="@id/moneyImageView"
+        app:layout_constraintTop_toTopOf="@id/moneyBgView" />
+
+    <ImageView
+        android:id="@+id/moneyImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_margin="16dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/money_label"
+        app:layout_constraintStart_toEndOf="@id/wandBgView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--    Rubies -->
+
+    <View
+        android:id="@+id/rubyBgView"
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="36dp"
+        android:background="@drawable/label_bg"
+        app:layout_constraintBottom_toBottomOf="@id/rubyImageView"
+        app:layout_constraintStart_toEndOf="@id/moneyBgView"
+        app:layout_constraintTop_toTopOf="@id/rubyImageView" />
+
+    <TextView
+        android:id="@+id/rubyTextView"
+        style="@style/LabelText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="@id/rubyBgView"
+        app:layout_constraintEnd_toEndOf="@id/rubyBgView"
+        app:layout_constraintStart_toEndOf="@id/rubyImageView"
+        app:layout_constraintTop_toTopOf="@id/rubyBgView" />
+
+    <ImageView
+        android:id="@+id/rubyImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_margin="16dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ruby_label"
+        app:layout_constraintStart_toEndOf="@id/moneyBgView"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
