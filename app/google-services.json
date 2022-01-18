@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "698468846623",
+    "firebase_url": "https://hitselka-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "hitselka",
     "storage_bucket": "hitselka.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "698468846623-780hd7mmc7vghm1nej32rqe1d67dbsmh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tsu.hitselka",
+            "certificate_hash": "45a1228b5ec08f15a074f221e97c3acb0a8913f7"
+          }
+        },
         {
           "client_id": "698468846623-eg53qitu7di67rp6r4bp4hds7m95tjr7.apps.googleusercontent.com",
           "client_type": 3
