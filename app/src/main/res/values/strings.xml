@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Хитсолочка</string>
+    <string name="settings">Настройки</string>
+    <string name="language">Язык</string>
+    <string name="sound">Звук</string>
+    <string name="music">Музыка</string>
 </resources>

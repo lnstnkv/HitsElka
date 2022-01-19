@@ -10,10 +10,8 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
-import com.tsu.hitselka.model.GameLogic
-import com.tsu.hitselka.model.Resources
-import com.tsu.hitselka.model.SharedPrefs
-import com.tsu.hitselka.model.Stats
+import com.tsu.hitselka.model.*
+import java.util.*
 
 class GameViewModel : ViewModel() {
     private val db =
@@ -25,6 +23,15 @@ class GameViewModel : ViewModel() {
 
     private val _stats = MutableLiveData<Stats>()
     val stats: LiveData<Stats> get() = _stats
+
+    private val _isRussian = MutableLiveData<Boolean>()
+    val isRussian: LiveData<Boolean> get() = _isRussian
+
+    private val _isMusicOn = MutableLiveData<Boolean>()
+    val isMusicOn: LiveData<Boolean> get() = _isMusicOn
+
+    private val _isSoundOn = MutableLiveData<Boolean>()
+    val isSoundOn: LiveData<Boolean> get() = _isSoundOn
 
     init {
         val uid = SharedPrefs.getUID()
@@ -43,6 +50,11 @@ class GameViewModel : ViewModel() {
 
                     val stats = data.child("stats").getValue<Stats>()
                     _stats.value = stats ?: return
+
+                    val settings = data.child("settings").getValue<Settings>()
+                    _isRussian.value = settings?.lang ?: return
+                    _isMusicOn.value = settings.music
+                    _isSoundOn.value = settings.sound
                 }
             }
 

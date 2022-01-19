@@ -3,14 +3,11 @@ package com.tsu.hitselka
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
-import android.provider.Settings
+import android.util.Log
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.WindowInsetsControllerCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.Target
 import com.google.firebase.auth.ktx.auth
@@ -18,6 +15,7 @@ import com.google.firebase.ktx.Firebase
 import com.tsu.hitselka.databinding.ActivityGameBinding
 import com.tsu.hitselka.databinding.ControlsBinding
 import com.tsu.hitselka.model.setFullscreen
+import java.util.*
 
 class GameActivity : AppCompatActivity(R.layout.controls) {
     private val binding by lazy { ActivityGameBinding.inflate(layoutInflater) }
@@ -26,6 +24,9 @@ class GameActivity : AppCompatActivity(R.layout.controls) {
     private lateinit var surface: SurfaceView
     private lateinit var clickSound: MediaPlayer
     private lateinit var backgroundMusic: MediaPlayer
+
+    private var isMusicOn = false
+    private var isSoundOn = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -96,6 +97,27 @@ class GameActivity : AppCompatActivity(R.layout.controls) {
         viewModel.stats.observe(this) { stats ->
             controls.levelTextView.text = stats.currentLevel.toString()
         }
+
+        viewModel.isRussian.observe(this) { state ->
+            val locale = if (state) Locale("ru", "RU") else Locale.ENGLISH
+            Locale.setDefault(locale)
+            val config = resources.configuration
+            config.setLocale(locale)
+            resources.updateConfiguration(config, resources.displayMetrics)
+        }
+
+        viewModel.isMusicOn.observe(this) { state ->
+            isMusicOn = state
+            if (state) {
+                backgroundMusic.start()
+            } else {
+                backgroundMusic.pause()
+            }
+        }
+
+        viewModel.isSoundOn.observe(this) { state ->
+            isSoundOn = state
+        }
     }
 
     private fun setProfileImage() {
@@ -113,16 +135,25 @@ class GameActivity : AppCompatActivity(R.layout.controls) {
 
         backgroundMusic = MediaPlayer.create(this, R.raw.music)
         backgroundMusic.isLooping = true
-        backgroundMusic.setVolume(50f, 50f)
-        //backgroundMusic.start()
+        backgroundMusic.setVolume(20f, 20f)
+        playMusic()
+    }
+
+    private fun playMusic() {
+        backgroundMusic.start()
+        if (!isMusicOn) {
+            backgroundMusic.pause()
+        }
     }
 
     private fun playClickSound() {
-        clickSound.start()
+        if (isSoundOn) {
+            clickSound.start()
+        }
     }
 
     override fun onRestart() {
-        backgroundMusic.start()
+        playMusic()
         super.onRestart()
     }
 
@@ -134,11 +165,6 @@ class GameActivity : AppCompatActivity(R.layout.controls) {
     override fun onPause() {
         surface.stop()
         super.onPause()
-    }
-
-    override fun onStop() {
-        backgroundMusic.pause()
-        super.onStop()
     }
 
     override fun onDestroy() {

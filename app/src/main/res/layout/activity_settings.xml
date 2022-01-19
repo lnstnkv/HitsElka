@@ -11,9 +11,108 @@
         android:id="@+id/backgroundImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/background_blur"
         android:scaleType="centerCrop"
+        android:src="@drawable/background_blur"
+        android:tint="#7F083D7C"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/overlayView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="-48dp"
+        android:layout_marginTop="-32dp"
+        android:layout_marginEnd="-48dp"
+        android:layout_marginBottom="-32dp"
+        android:background="@drawable/settings_bg"
+        app:layout_constraintBottom_toBottomOf="@id/soundTextView"
+        app:layout_constraintEnd_toEndOf="@id/musicToggle"
+        app:layout_constraintStart_toStartOf="@id/langToggle"
+        app:layout_constraintTop_toTopOf="@id/titleTextView" />
+
+    <TextView
+        android:id="@+id/titleTextView"
+        style="@style/TitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/settings"
+        app:layout_constraintBottom_toTopOf="@id/soundToggle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <ToggleButton
+        android:id="@+id/langToggle"
+        style="@style/SettingsButton"
+        android:background="@drawable/btn_settings_lang"
+        android:checked="true"
+        android:paddingStart="16dp"
+        app:layout_constraintEnd_toStartOf="@+id/soundToggle"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/soundToggle" />
+
+    <TextView
+        style="@style/SettingsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/language"
+        app:layout_constraintEnd_toEndOf="@id/langToggle"
+        app:layout_constraintStart_toStartOf="@id/langToggle"
+        app:layout_constraintTop_toBottomOf="@id/langToggle" />
+
+    <ToggleButton
+        android:id="@+id/soundToggle"
+        style="@style/SettingsButton"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/btn_settings_sound"
+        android:checked="true"
+        app:layout_constraintBottom_toTopOf="@id/soundTextView"
+        app:layout_constraintEnd_toStartOf="@id/musicToggle"
+        app:layout_constraintStart_toEndOf="@id/langToggle"
+        app:layout_constraintTop_toBottomOf="@id/titleTextView" />
+
+    <TextView
+        android:id="@+id/soundTextView"
+        style="@style/SettingsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/sound"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/soundToggle"
+        app:layout_constraintStart_toStartOf="@id/soundToggle"
+        app:layout_constraintTop_toBottomOf="@id/soundToggle" />
+
+    <ToggleButton
+        android:id="@+id/musicToggle"
+        style="@style/SettingsButton"
+        android:background="@drawable/btn_settings_music"
+        android:checked="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/soundToggle"
+        app:layout_constraintTop_toTopOf="@id/soundToggle" />
+
+    <TextView
+        style="@style/SettingsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/music"
+        app:layout_constraintEnd_toEndOf="@id/musicToggle"
+        app:layout_constraintStart_toStartOf="@id/musicToggle"
+        app:layout_constraintTop_toBottomOf="@id/musicToggle" />
+
+    <View
+        android:id="@+id/closeBtnView"
+        android:layout_width="48dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/btn_close"
+        app:layout_constraintStart_toEndOf="@id/overlayView"
+        app:layout_constraintTop_toTopOf="@id/overlayView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

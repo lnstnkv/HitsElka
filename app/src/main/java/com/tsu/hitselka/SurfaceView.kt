@@ -33,7 +33,6 @@ class SurfaceView(context: Context) : SurfaceView(context), SurfaceHolder.Callba
     }
 
     fun stop() {
-        Log.d("MyTag", "SurfaceView.stop()")
         drawThread?.setRunning(false)
     }
 

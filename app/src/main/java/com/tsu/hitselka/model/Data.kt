@@ -4,7 +4,8 @@ data class PlayerInfo(
     val stats: Stats = Stats(),
     val resources: Resources = Resources(),
     val firstYearStats: FirstYearStats = FirstYearStats(),
-    val firstYearInventory: List<Toy> = listOf()
+    val firstYearInventory: List<Toy> = listOf(),
+    val settings: Settings = Settings()
 )
 
 data class Stats(
@@ -34,6 +35,12 @@ data class FirstYearStats(
 
 data class Toy(
     val name: String,
-    val x: Int,
-    val y: Int
+    var x: Int,
+    var y: Int
+)
+
+data class Settings(
+    var lang: Boolean = true, // true - Rus, false - Eng
+    val music: Boolean = true,
+    val sound: Boolean = true,
 )
