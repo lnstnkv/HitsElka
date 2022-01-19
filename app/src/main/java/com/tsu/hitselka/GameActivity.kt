@@ -35,8 +35,14 @@ class GameActivity : AppCompatActivity(R.layout.controls) {
 
         setProfileImage()
 
-        viewModel.player.observe(this) {
-            Log.d("MyTag", it.toString())
+        viewModel.resources.observe(this) { resources ->
+            controls.wandTextView.text = resources.wands.toString()
+            controls.moneyTextView.text = resources.moneys.toString()
+            controls.rubyTextView.text = resources.rubies.toString()
+        }
+
+        viewModel.stats.observe(this) { stats ->
+            controls.levelTextView.text = stats.currentLevel.toString()
         }
 
         controls.achievementsImageView.setOnClickListener {

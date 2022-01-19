@@ -92,7 +92,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-<!--    Level -->
+    <!--    Level -->
 
     <View
         android:id="@+id/levelBgView"
@@ -105,18 +105,29 @@
         app:layout_constraintTop_toTopOf="@id/levelImageView" />
 
     <View
-        android:id="@+id/levelFillView"
-        android:layout_width="60dp"
+        android:layout_width="76dp"
         android:layout_height="16dp"
+        android:background="@drawable/label_inner_bg"
+        app:layout_constraintBottom_toBottomOf="@id/levelBgView"
+        app:layout_constraintEnd_toEndOf="@id/levelBgView"
+        app:layout_constraintStart_toStartOf="@id/levelBgView"
+        app:layout_constraintTop_toTopOf="@id/levelBgView" />
+
+    <View
+        android:id="@+id/levelFillView"
+        android:layout_width="38dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="2dp"
         android:background="@drawable/label_fill_bg"
         app:layout_constraintBottom_toBottomOf="@id/levelBgView"
         app:layout_constraintStart_toStartOf="@id/levelBgView"
         app:layout_constraintTop_toTopOf="@id/levelBgView" />
 
     <TextView
+        android:id="@+id/levelTextView"
+        style="@style/LabelText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        style="@style/LabelText"
         android:text="1"
         app:layout_constraintBottom_toBottomOf="@id/levelBgView"
         app:layout_constraintEnd_toEndOf="@id/levelBgView"
@@ -133,11 +144,11 @@
         app:layout_constraintStart_toEndOf="@id/profileBgView"
         app:layout_constraintTop_toTopOf="parent" />
 
-<!--    Wands -->
+    <!--    Wands -->
 
     <View
         android:id="@+id/wandBgView"
-        android:layout_width="80dp"
+        android:layout_width="100dp"
         android:layout_height="20dp"
         android:layout_marginStart="24dp"
         android:background="@drawable/label_bg"
@@ -146,7 +157,7 @@
         app:layout_constraintTop_toTopOf="@id/levelImageView" />
 
     <TextView
-        android:id="@+id/levelTextView"
+        android:id="@+id/wandTextView"
         style="@style/LabelText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -166,7 +177,7 @@
         app:layout_constraintStart_toEndOf="@id/levelBgView"
         app:layout_constraintTop_toTopOf="parent" />
 
-<!--    Moneys -->
+    <!--    Moneys -->
 
     <View
         android:id="@+id/moneyBgView"
