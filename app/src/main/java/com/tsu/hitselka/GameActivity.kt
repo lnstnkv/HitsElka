@@ -6,6 +6,7 @@ import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import com.tsu.hitselka.databinding.ControlsBinding
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
@@ -14,10 +15,12 @@ import com.bumptech.glide.request.target.Target
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.tsu.hitselka.databinding.ActivityGameBinding
+import com.tsu.hitselka.model.GameLogic
 
 class GameActivity : AppCompatActivity(R.layout.controls) {
     private val binding by lazy { ActivityGameBinding.inflate(layoutInflater) }
     private val controls by lazy { ControlsBinding.inflate(layoutInflater) }
+    private val viewModel by viewModels<GameViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         hideSystemBars()
@@ -31,6 +34,10 @@ class GameActivity : AppCompatActivity(R.layout.controls) {
         addContentView(controls.root, lp)
 
         setProfileImage()
+
+        viewModel.player.observe(this) {
+            Log.d("MyTag", it.toString())
+        }
 
         controls.achievementsImageView.setOnClickListener {
             Toast.makeText(this, "Achievements", Toast.LENGTH_SHORT).show()

@@ -1,6 +1,7 @@
 package com.tsu.hitselka
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -18,6 +19,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.tsu.hitselka.databinding.ActivityLoginBinding
+import com.tsu.hitselka.model.SharedPrefs
 
 class LoginActivity : AppCompatActivity(R.layout.activity_login) {
     private val binding by lazy { ActivityLoginBinding.inflate(layoutInflater) }
@@ -29,6 +31,7 @@ class LoginActivity : AppCompatActivity(R.layout.activity_login) {
         super.onCreate(savedInstanceState)
 
         auth = Firebase.auth
+        SharedPrefs.init(this)
         checkLoginState()
         setContentView(binding.root)
 
@@ -70,6 +73,7 @@ class LoginActivity : AppCompatActivity(R.layout.activity_login) {
         val credentials = GoogleAuthProvider.getCredential(idToken, null)
         auth.signInWithCredential(credentials).addOnCompleteListener {
             if (it.isSuccessful) {
+                saveUID()
                 checkLoginState()
             } else {
                 // неудачно
@@ -78,9 +82,23 @@ class LoginActivity : AppCompatActivity(R.layout.activity_login) {
     }
 
     private fun checkLoginState() {
+        val user = auth.currentUser
+        if (user != null) {
+            Log.d("MyTag", "LoginActivity.checkLoginState > ${user.uid}")
+            SharedPrefs.saveUID(user.uid)
+        }
+
         if (auth.currentUser != null) {
             val intent = Intent(this, GameActivity::class.java)
             startActivity(intent)
+        }
+    }
+
+    private fun saveUID() {
+        val user = auth.currentUser
+        if (user != null) {
+            Log.d("MyTag", "LoginActivity.saveUID > ${user.uid}")
+            SharedPrefs.saveUID(user.uid)
         }
     }
 
