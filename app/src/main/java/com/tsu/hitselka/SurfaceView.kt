@@ -2,16 +2,14 @@ package com.tsu.hitselka
 
 import android.content.Context
 import android.graphics.PixelFormat
+import android.util.Log
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 
 class SurfaceView(context: Context) : SurfaceView(context), SurfaceHolder.Callback {
     private var drawThread: DrawThread? = null
 
-    override fun surfaceChanged(
-        holder: SurfaceHolder, format: Int, width: Int,
-        height: Int
-    ) {
+    override fun surfaceChanged(holder: SurfaceHolder, format: Int, width: Int, height: Int) {
     }
 
     override fun surfaceCreated(holder: SurfaceHolder) {
@@ -32,6 +30,15 @@ class SurfaceView(context: Context) : SurfaceView(context), SurfaceHolder.Callba
                 // если не получилось, то будем пытаться еще и еще
             }
         }
+    }
+
+    fun stop() {
+        Log.d("MyTag", "SurfaceView.stop()")
+        drawThread?.setRunning(false)
+    }
+
+    fun start() {
+        drawThread?.setRunning(true)
     }
 
     init {

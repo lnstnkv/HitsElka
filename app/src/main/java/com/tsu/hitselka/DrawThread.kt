@@ -6,13 +6,21 @@ import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.view.SurfaceHolder
 
-internal class DrawThread(private val surfaceHolder: SurfaceHolder, resources: Resources?) :
-    Thread() {
+internal class DrawThread(private val surfaceHolder: SurfaceHolder, resources: Resources?) : Thread() {
     private var runFlag = false
-    private val hedhedhog: Bitmap
-    private val fatherFrost: Bitmap
-    private val winterMaiden: Bitmap
-    private val university: Bitmap
+
+    private val hedgehog: Bitmap = BitmapFactory.decodeResource(
+        resources, R.drawable.hedgehog
+    )
+    private val fatherFrost: Bitmap = BitmapFactory.decodeResource(
+        resources, R.drawable.father_frost
+    )
+    private val winterMaiden: Bitmap = BitmapFactory.decodeResource(
+        resources, R.drawable.winter_maiden
+    )
+    private val university: Bitmap = BitmapFactory.decodeResource(
+        resources, R.drawable.university
+    )
 
     fun setRunning(run: Boolean) {
         runFlag = run
@@ -26,7 +34,7 @@ internal class DrawThread(private val surfaceHolder: SurfaceHolder, resources: R
                 // получаем объект Canvas и выполняем отрисовку
                 canvas = surfaceHolder.lockCanvas(null)
                 synchronized(surfaceHolder) {
-                    canvas.drawBitmap(hedhedhog, 0f, 0f, null)
+                    canvas.drawBitmap(hedgehog, 0f, 0f, null)
                     canvas.drawBitmap(fatherFrost, 250f, 250f, null)
                     canvas.drawBitmap(winterMaiden, 350f, 350f, null)
                     canvas.drawBitmap(university, 200f, 350f, null)
@@ -36,22 +44,5 @@ internal class DrawThread(private val surfaceHolder: SurfaceHolder, resources: R
 
             }
         }
-    }
-
-    init {
-
-        // загружаем картинку, которую будем отрисовывать
-        hedhedhog = BitmapFactory.decodeResource(
-            resources, R.drawable.hedhedhog
-        )
-        fatherFrost = BitmapFactory.decodeResource(
-            resources, R.drawable.father_frost
-        )
-        winterMaiden = BitmapFactory.decodeResource(
-            resources, R.drawable.winter_maiden
-        )
-        university = BitmapFactory.decodeResource(
-            resources, R.drawable.university
-        )
     }
 }

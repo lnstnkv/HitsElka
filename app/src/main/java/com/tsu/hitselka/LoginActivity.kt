@@ -1,15 +1,11 @@
 package com.tsu.hitselka
 
 import android.content.Intent
-import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.WindowInsetsControllerCompat
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -20,6 +16,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.tsu.hitselka.databinding.ActivityLoginBinding
 import com.tsu.hitselka.model.SharedPrefs
+import com.tsu.hitselka.model.setFullscreen
 
 class LoginActivity : AppCompatActivity(R.layout.activity_login) {
     private val binding by lazy { ActivityLoginBinding.inflate(layoutInflater) }
@@ -27,27 +24,28 @@ class LoginActivity : AppCompatActivity(R.layout.activity_login) {
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        hideSystemBars()
         super.onCreate(savedInstanceState)
 
         auth = Firebase.auth
         SharedPrefs.init(this)
         checkLoginState()
         setContentView(binding.root)
+        setFullscreen()
 
-        launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
-            try {
-                val account = task.getResult(ApiException::class.java)
-                if (account != null) {
-                    account.idToken?.let {
-                        firebaseLogin(it)
+        launcher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+                try {
+                    val account = task.getResult(ApiException::class.java)
+                    if (account != null) {
+                        account.idToken?.let {
+                            firebaseLogin(it)
+                        }
                     }
+                } catch (e: ApiException) {
+                    Log.d("Auth", "Api exception")
                 }
-            } catch (e: ApiException) {
-                Log.d("Auth", "Api exception")
             }
-        }
 
         binding.signInButton.setOnClickListener {
             login()
@@ -82,12 +80,6 @@ class LoginActivity : AppCompatActivity(R.layout.activity_login) {
     }
 
     private fun checkLoginState() {
-        val user = auth.currentUser
-        if (user != null) {
-            Log.d("MyTag", "LoginActivity.checkLoginState > ${user.uid}")
-            SharedPrefs.saveUID(user.uid)
-        }
-
         if (auth.currentUser != null) {
             val intent = Intent(this, GameActivity::class.java)
             startActivity(intent)
@@ -97,18 +89,7 @@ class LoginActivity : AppCompatActivity(R.layout.activity_login) {
     private fun saveUID() {
         val user = auth.currentUser
         if (user != null) {
-            Log.d("MyTag", "LoginActivity.saveUID > ${user.uid}")
             SharedPrefs.saveUID(user.uid)
         }
-    }
-
-    private fun hideSystemBars() {
-        val windowInsetsController =
-            ViewCompat.getWindowInsetsController(window.decorView) ?: return
-        // Configure the behavior of the hidden system bars
-        windowInsetsController.systemBarsBehavior =
-            WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-        // Hide both the status bar and the navigation bar
-        windowInsetsController.hide(WindowInsetsCompat.Type.systemBars())
     }
 }

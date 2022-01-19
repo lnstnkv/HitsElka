@@ -1,7 +1,9 @@
 package com.tsu.hitselka
 
+import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.provider.Settings
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -15,18 +17,20 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.tsu.hitselka.databinding.ActivityGameBinding
 import com.tsu.hitselka.databinding.ControlsBinding
+import com.tsu.hitselka.model.setFullscreen
 
 class GameActivity : AppCompatActivity(R.layout.controls) {
     private val binding by lazy { ActivityGameBinding.inflate(layoutInflater) }
     private val controls by lazy { ControlsBinding.inflate(layoutInflater) }
     private val viewModel by viewModels<GameViewModel>()
+    private lateinit var surface: SurfaceView
     private lateinit var clickSound: MediaPlayer
     private lateinit var backgroundMusic: MediaPlayer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val surface = SurfaceView(this)
+        surface = SurfaceView(this)
         setContentView(surface)
 
         val lp = ViewGroup.LayoutParams(
@@ -39,7 +43,7 @@ class GameActivity : AppCompatActivity(R.layout.controls) {
         initListeners()
         initObservers()
         setProfileImage()
-        hideSystemBars()
+        setFullscreen()
         setMusic()
     }
 
@@ -65,8 +69,10 @@ class GameActivity : AppCompatActivity(R.layout.controls) {
         }
 
         controls.settingsImageView.setOnClickListener {
-            Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show()
             playClickSound()
+            val intent = Intent(this, SettingsActivity::class.java)
+                .addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
         }
 
         controls.shopImageView.setOnClickListener {
@@ -102,14 +108,6 @@ class GameActivity : AppCompatActivity(R.layout.controls) {
             .into(controls.profileImageView)
     }
 
-    private fun hideSystemBars() {
-        val windowInsetsController =
-            ViewCompat.getWindowInsetsController(window.decorView) ?: return
-        windowInsetsController.systemBarsBehavior =
-            WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-        windowInsetsController.hide(WindowInsetsCompat.Type.systemBars())
-    }
-
     private fun setMusic() {
         clickSound = MediaPlayer.create(this, R.raw.click)
 
@@ -126,6 +124,16 @@ class GameActivity : AppCompatActivity(R.layout.controls) {
     override fun onRestart() {
         backgroundMusic.start()
         super.onRestart()
+    }
+
+    override fun onResume() {
+        surface.start()
+        super.onResume()
+    }
+
+    override fun onPause() {
+        surface.stop()
+        super.onPause()
     }
 
     override fun onStop() {
