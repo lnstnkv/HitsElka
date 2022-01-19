@@ -23,7 +23,6 @@ class GameActivity : AppCompatActivity(R.layout.controls) {
     private val viewModel by viewModels<GameViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        hideSystemBars()
         super.onCreate(savedInstanceState)
 
         val surface = SurfaceView(this)
@@ -33,8 +32,43 @@ class GameActivity : AppCompatActivity(R.layout.controls) {
         addContentView(binding.root, lp)
         addContentView(controls.root, lp)
 
+        initListeners()
+        initObservers()
         setProfileImage()
+        hideSystemBars()
+    }
 
+    private fun initListeners() {
+        controls.yearSelectorImageView.setOnClickListener {
+            Toast.makeText(this, "Year selector", Toast.LENGTH_SHORT).show()
+        }
+
+        controls.achievementsImageView.setOnClickListener {
+            Toast.makeText(this, "Achievements", Toast.LENGTH_SHORT).show()
+        }
+
+        controls.giftImageView.setOnClickListener {
+            Toast.makeText(this, "Gifts", Toast.LENGTH_SHORT).show()
+        }
+
+        controls.wandView.setOnClickListener {
+            Toast.makeText(this, "Enhance", Toast.LENGTH_SHORT).show()
+        }
+
+        controls.settingsImageView.setOnClickListener {
+            Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show()
+        }
+
+        controls.shopImageView.setOnClickListener {
+            Toast.makeText(this, "Shop", Toast.LENGTH_SHORT).show()
+        }
+
+        controls.playImageView.setOnClickListener {
+            Toast.makeText(this, "Play", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun initObservers() {
         viewModel.resources.observe(this) { resources ->
             controls.wandTextView.text = resources.wands.toString()
             controls.moneyTextView.text = resources.moneys.toString()
@@ -43,10 +77,6 @@ class GameActivity : AppCompatActivity(R.layout.controls) {
 
         viewModel.stats.observe(this) { stats ->
             controls.levelTextView.text = stats.currentLevel.toString()
-        }
-
-        controls.achievementsImageView.setOnClickListener {
-            Toast.makeText(this, "Achievements", Toast.LENGTH_SHORT).show()
         }
     }
 
