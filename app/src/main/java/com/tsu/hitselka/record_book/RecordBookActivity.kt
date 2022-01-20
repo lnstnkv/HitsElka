@@ -1,8 +1,9 @@
-package com.tsu.hitselka
+package com.tsu.hitselka.record_book
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.tsu.hitselka.R
 import com.tsu.hitselka.databinding.ActivityRecordBookBinding
 import com.tsu.hitselka.model.Object
 import com.tsu.hitselka.model.setFullscreen
@@ -25,11 +26,11 @@ class RecordBookActivity : AppCompatActivity() {
             addItemDecoration(ImprovementItemDecoration())
         }
         val improvement = mutableListOf<Object>()
-        improvement.add(Object("hodhedhog", 0, 0))
-        improvement.add(Object("special", 0, 0))
-        improvement.add(Object("maiden", 0, 0))
-        improvement.add(Object("father", 0, 0))
-        improvement.add(Object("university", 0, 0))
+
+        improvement.add(Object("Hedgehog", R.drawable.hedgehog,0, 0))
+        improvement.add(Object("Winter Maiden",  R.drawable.winter_maiden,0, 0))
+        improvement.add(Object("Father Frost",  R.drawable.father_frost,0, 0))
+        improvement.add(Object("University", R.drawable.university, 0, 0))
 
         improvementAdapter.submitList(improvement)
     }
@@ -48,6 +49,4 @@ class RecordBookActivity : AppCompatActivity() {
         setFullscreen()
 
     }
-
-
 }

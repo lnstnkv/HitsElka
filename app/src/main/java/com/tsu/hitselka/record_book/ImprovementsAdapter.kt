@@ -1,12 +1,12 @@
-package com.tsu.hitselka
+package com.tsu.hitselka.record_book
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.tsu.hitselka.R
 import com.tsu.hitselka.databinding.ItemImprovementBinding
 import com.tsu.hitselka.model.Object
 
@@ -43,6 +43,10 @@ class ImprovementAdapter(
         }
 
         fun bind(objects: Object) = with(binding) {
+            imageViewObject.setImageResource(objects.image)
+            textViewImprovement.text = objects.improvements.toString()
+            textViewStage.text=objects.level.toString()
+            textViewName.text=objects.type
 
         }
     }

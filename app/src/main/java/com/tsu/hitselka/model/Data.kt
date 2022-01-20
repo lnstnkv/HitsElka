@@ -47,6 +47,7 @@ data class Settings(
 
 data class Object(
     val type: String,
+    val image:Int,
     val level:Int,
     val improvements: Int
 )

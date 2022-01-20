@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HitsElka">
         <activity
-            android:name=".RecordBookActivity"
+            android:name=".record_book.RecordBookActivity"
             android:exported="true"
             android:screenOrientation="landscape">
             <intent-filter>

@@ -1,8 +1,9 @@
-package com.tsu.hitselka
+package com.tsu.hitselka.record_book
 
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.tsu.hitselka.R
 
 class ImprovementItemDecoration:RecyclerView.ItemDecoration(){
     override fun getItemOffsets(
