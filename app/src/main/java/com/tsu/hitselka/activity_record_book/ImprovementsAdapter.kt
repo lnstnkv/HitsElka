@@ -1,6 +1,7 @@
 package com.tsu.hitselka.activity_record_book
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,19 +39,51 @@ class ImprovementAdapter(
 
         init {
             binding.button.setOnClickListener {
-                listener.onItemClick(getItem(adapterPosition))
+                listener.onItemClick(getItem(layoutPosition))
             }
         }
 
-        fun bind(objects: Object) = with(binding) {
-            objectImageView.setImageResource(objects.image)
-            progressTextView.text = "0%"
-            stageTextView.text = context.resources.getString(R.string.stage_list, objects.level)
-            titleTextView.text = objects.type
+        fun bind(item: Object) = with(binding) {
+            objectImageView.setImageResource(item.image)
+            stageTextView.text = context.resources.getString(R.string.stage_list, item.level)
+            titleTextView.setText(item.name)
+
+            if (item.built || item.locked) {
+                progressView.visibility = View.INVISIBLE
+                progressBgView.visibility = View.INVISIBLE
+                progressTextView.visibility = View.INVISIBLE
+                button.visibility = View.INVISIBLE
+                doneImageView.visibility = View.VISIBLE
+                doneTextView.visibility = View.VISIBLE
+
+                if (item.locked) {
+                    doneImageView.setImageResource(R.drawable.ic_locked)
+                    doneTextView.text = context.resources.getString(R.string.locked, item.level - 1)
+                }
+
+                return@with
+            }
+
+            val progress = getPercentage(item)
+            progressTextView.text = "$progress%"
+
+            val width = getWidth(progress)
+            if (width == 0) {
+                progressView.visibility = View.INVISIBLE
+            } else {
+                progressView.layoutParams.width = width
+            }
         }
     }
 
     interface ImprovementAdapterListener {
         fun onItemClick(item: Object)
+    }
+
+    private fun getPercentage(item: Object) = item.wandsSpent * 100 / item.wandsNeeded
+
+    private fun getWidth(percentage: Int): Int {
+        val maxWidth = context.resources.getDimensionPixelSize(R.dimen.object_progress_width)
+        return maxWidth * percentage / 100
     }
 }

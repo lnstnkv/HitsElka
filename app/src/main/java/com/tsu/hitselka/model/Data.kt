@@ -1,5 +1,8 @@
 package com.tsu.hitselka.model
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
 data class PlayerInfo(
     val stats: Stats = Stats(),
     val resources: Resources = Resources(),
@@ -52,9 +55,14 @@ data class Gift(
     val gifts: Int,
 )
 
+@Parcelize
 data class Object(
-    val type: String,
-    val image:Int,
-    val level:Int,
-    val improvements: Int
-)
+    val name: Int,
+    val image: Int,
+    val level: Int,
+    val maxLevel: Int,
+    val wandsSpent: Int,
+    val wandsNeeded: Int,
+    val built: Boolean,
+    val locked: Boolean
+) : Parcelable

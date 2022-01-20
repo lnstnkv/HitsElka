@@ -2,4 +2,6 @@
 <resources>
     <dimen name="margin_8">8dp</dimen>
     <dimen name="side_margin">64dp</dimen>
+    <dimen name="object_progress_width">124dp</dimen>
+    <dimen name="midterms_progress_width">300dp</dimen>
 </resources>
