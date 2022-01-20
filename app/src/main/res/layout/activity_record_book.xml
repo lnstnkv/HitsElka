@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="horizontal"
     tools:context=".RecordBookActivity">
 
     <ImageView
@@ -54,8 +55,8 @@
         android:layout_margin="16dp"
         android:adjustViewBounds="true"
         android:src="@drawable/progress_label"
-        tools:layout_editor_absoluteX="446dp"
-        tools:layout_editor_absoluteY="120dp" />
+        tools:layout_editor_absoluteX="494dp"
+        tools:layout_editor_absoluteY="128dp" />
 
     <TextView
         android:id="@+id/textViewClose"
