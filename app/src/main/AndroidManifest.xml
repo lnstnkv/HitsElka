@@ -12,12 +12,14 @@
         android:screenOrientation="landscape"
         android:supportsRtl="true"
         android:theme="@style/Theme.HitsElka">
-
+        <activity
+            android:name=".activity_gifts.GiftsActivity"
+            android:exported="false"
+            android:screenOrientation="landscape"/>
         <activity
             android:name=".SettingsActivity"
             android:exported="false"
-            android:screenOrientation="landscape"/>
-
+            android:screenOrientation="landscape" />
         <activity
             android:name=".LoginActivity"
             android:exported="true"
@@ -28,7 +30,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".GameActivity"
             android:exported="true"

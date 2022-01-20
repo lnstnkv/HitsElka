@@ -44,3 +44,10 @@ data class Settings(
     val music: Boolean = true,
     val sound: Boolean = true,
 )
+
+data class Gift(
+    val type: String,
+    val level: Int,
+    val giftsOpened: Int,
+    val gifts: Int,
+)

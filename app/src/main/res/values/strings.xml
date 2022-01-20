@@ -4,4 +4,10 @@
     <string name="language">Язык</string>
     <string name="sound">Звук</string>
     <string name="music">Музыка</string>
+    <string name="bright_gift">Яркий подарок</string>
+    <string name="special_gift">Особый подарок</string>
+    <string name="fairytale_gift">Сказочный подарок</string>
+    <string name="gift_award">Можно получить:</string>
+    <string name="level">Уровень %1$d</string>
+    <string name="open">Открыть</string>
 </resources>

@@ -106,8 +106,8 @@
         app:layout_constraintStart_toStartOf="@id/musicToggle"
         app:layout_constraintTop_toBottomOf="@id/musicToggle" />
 
-    <View
-        android:id="@+id/closeBtnView"
+    <Button
+        android:id="@+id/closeButton"
         android:layout_width="48dp"
         android:layout_height="32dp"
         android:layout_marginStart="16dp"

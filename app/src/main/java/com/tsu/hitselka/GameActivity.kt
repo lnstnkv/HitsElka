@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.Target
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.tsu.hitselka.activity_gifts.GiftsActivity
 import com.tsu.hitselka.databinding.ActivityGameBinding
 import com.tsu.hitselka.databinding.ControlsBinding
 import com.tsu.hitselka.model.setFullscreen
@@ -60,8 +61,10 @@ class GameActivity : AppCompatActivity(R.layout.controls) {
         }
 
         controls.giftImageView.setOnClickListener {
-            Toast.makeText(this, "Gifts", Toast.LENGTH_SHORT).show()
             playClickSound()
+            val intent = Intent(this, GiftsActivity::class.java)
+                .addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
         }
 
         controls.wandView.setOnClickListener {

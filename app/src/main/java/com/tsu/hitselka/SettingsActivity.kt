@@ -52,7 +52,7 @@ class SettingsActivity : AppCompatActivity(R.layout.activity_settings) {
     }
 
     private fun initListeners() {
-        binding.closeBtnView.setOnClickListener {
+        binding.closeButton.setOnClickListener {
             finish()
         }
 
