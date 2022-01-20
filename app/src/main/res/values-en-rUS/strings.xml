@@ -11,4 +11,5 @@
     <string name="gift_award">You can get:</string>
     <string name="level">Level %1$d</string>
     <string name="open">Open</string>
+    <string name="logout">Logout</string>
 </resources>

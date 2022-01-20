@@ -15,6 +15,7 @@ import com.google.firebase.ktx.Firebase
 import com.tsu.hitselka.activity_gifts.GiftsActivity
 import com.tsu.hitselka.databinding.ActivityGameBinding
 import com.tsu.hitselka.databinding.ControlsBinding
+import com.tsu.hitselka.model.SharedPrefs
 import com.tsu.hitselka.model.setFullscreen
 import java.util.*
 
@@ -63,7 +64,6 @@ class GameActivity : AppCompatActivity(R.layout.controls) {
         controls.giftImageView.setOnClickListener {
             playClickSound()
             val intent = Intent(this, GiftsActivity::class.java)
-                .addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
         }
 
@@ -75,7 +75,6 @@ class GameActivity : AppCompatActivity(R.layout.controls) {
         controls.settingsImageView.setOnClickListener {
             playClickSound()
             val intent = Intent(this, SettingsActivity::class.java)
-                .addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             startActivity(intent)
         }
 
@@ -161,6 +160,10 @@ class GameActivity : AppCompatActivity(R.layout.controls) {
     }
 
     override fun onResume() {
+        if (SharedPrefs.getUID().isBlank()) {
+            finish()
+        }
+
         surface.start()
         super.onResume()
     }
