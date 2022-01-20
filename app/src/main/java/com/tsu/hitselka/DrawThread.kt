@@ -34,10 +34,10 @@ internal class DrawThread(private val surfaceHolder: SurfaceHolder, resources: R
                 // получаем объект Canvas и выполняем отрисовку
                 canvas = surfaceHolder.lockCanvas(null)
                 synchronized(surfaceHolder) {
-                    canvas.drawBitmap(hedgehog, 0f, 0f, null)
-                    canvas.drawBitmap(fatherFrost, 250f, 250f, null)
-                    canvas.drawBitmap(winterMaiden, 350f, 350f, null)
-                    canvas.drawBitmap(university, 200f, 350f, null)
+                    canvas.drawBitmap(hedgehog, 1100f, 780f, null)
+                    canvas.drawBitmap(fatherFrost, 720f, 390f, null)
+                    canvas.drawBitmap(winterMaiden, 1200f, 480f, null)
+                    canvas.drawBitmap(university, 960f, 140f, null)
                     surfaceHolder.unlockCanvasAndPost(canvas)
                 }
             } finally {
