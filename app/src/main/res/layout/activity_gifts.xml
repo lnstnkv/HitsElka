@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context=".activity_gifts.GiftsActivity">
+
+    <ImageView
+        android:id="@+id/backgroundImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background_blur"
+        android:tint="#7F083D7C"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/closeButton"
+        android:layout_width="48dp"
+        android:layout_height="32dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/btn_close"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--    Wands -->
+
+    <View
+        android:id="@+id/wandBgView"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:background="@drawable/label_bg"
+        app:layout_constraintBottom_toBottomOf="@id/wandImageView"
+        app:layout_constraintEnd_toStartOf="@id/moneyBgView"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/wandImageView" />
+
+    <TextView
+        android:id="@+id/wandTextView"
+        style="@style/LabelText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="@id/wandBgView"
+        app:layout_constraintEnd_toEndOf="@id/wandBgView"
+        app:layout_constraintStart_toEndOf="@id/wandImageView"
+        app:layout_constraintTop_toTopOf="@id/wandBgView" />
+
+    <ImageView
+        android:id="@+id/wandImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="-20dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/wand_label"
+        app:layout_constraintEnd_toStartOf="@id/wandBgView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--    Moneys -->
+
+    <View
+        android:id="@+id/moneyBgView"
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="32dp"
+        android:background="@drawable/label_bg"
+        app:layout_constraintBottom_toBottomOf="@id/moneyImageView"
+        app:layout_constraintEnd_toStartOf="@id/rubyBgView"
+        app:layout_constraintStart_toEndOf="@id/wandBgView"
+        app:layout_constraintTop_toTopOf="@id/moneyImageView" />
+
+    <TextView
+        android:id="@+id/moneyTextView"
+        style="@style/LabelText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="@id/moneyBgView"
+        app:layout_constraintEnd_toEndOf="@id/moneyBgView"
+        app:layout_constraintStart_toEndOf="@id/moneyImageView"
+        app:layout_constraintTop_toTopOf="@id/moneyBgView" />
+
+    <ImageView
+        android:id="@+id/moneyImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_margin="16dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/money_label"
+        app:layout_constraintStart_toEndOf="@id/wandBgView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--    Rubies -->
+
+    <View
+        android:id="@+id/rubyBgView"
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="36dp"
+        android:background="@drawable/label_bg"
+        app:layout_constraintBottom_toBottomOf="@id/rubyImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/moneyBgView"
+        app:layout_constraintTop_toTopOf="@id/rubyImageView" />
+
+    <TextView
+        android:id="@+id/rubyTextView"
+        style="@style/LabelText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="@id/rubyBgView"
+        app:layout_constraintEnd_toEndOf="@id/rubyBgView"
+        app:layout_constraintStart_toEndOf="@id/rubyImageView"
+        app:layout_constraintTop_toTopOf="@id/rubyBgView" />
+
+    <ImageView
+        android:id="@+id/rubyImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_margin="16dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ruby_label"
+        app:layout_constraintStart_toEndOf="@id/moneyBgView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--    Recycler -->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/backgroundImageView"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:itemCount="3"
+        tools:listitem="@layout/item_bright_gift" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

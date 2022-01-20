@@ -5,4 +5,23 @@
     <string name="language">Language</string>
     <string name="sound">Sound</string>
     <string name="music">Music</string>
+    <string name="bright_gift">Bright gift</string>
+    <string name="special_gift">Special gift</string>
+    <string name="fairytale_gift">Fairytale gift</string>
+    <string name="gift_award">You can get:</string>
+    <string name="level">Level %1$d</string>
+    <string name="open">Open</string>
+    <string name="logout">Logout</string>
+    <string name="stage">Stage: %1%d/%2$d</string>
+    <string name="maiden">Diana Damirovna</string>
+    <string name="fatherFrost">Oleg Alexeevich</string>
+    <string name="forest">University Grove</string>
+    <string name="hedgehog">Hedgehog</string>
+    <string name="university">Second Building</string>
+    <string name="upgrade">Until upgrade: %1$d</string>
+    <string name="upgrade_reward">Reward\nfor upgrading:</string>
+    <string name="record_book">Record book</string>
+    <string name="midterms_progress">Midterms passed at %1$d\%</string>
+    <string name="upgrade_btn">Upgrade</string>
+    <string name="stage_list">Stage %1$d</string>
 </resources>

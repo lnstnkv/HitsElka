@@ -1,7 +1,9 @@
 package com.tsu.hitselka
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -52,7 +54,7 @@ class SettingsActivity : AppCompatActivity(R.layout.activity_settings) {
     }
 
     private fun initListeners() {
-        binding.closeBtnView.setOnClickListener {
+        binding.closeButton.setOnClickListener {
             finish()
         }
 
@@ -66,6 +68,15 @@ class SettingsActivity : AppCompatActivity(R.layout.activity_settings) {
 
         binding.langToggle.setOnCheckedChangeListener { _, isChecked ->
             changeLanguage(isChecked)
+        }
+
+        binding.logoutButton.setOnClickListener {
+            Firebase.auth.signOut()
+
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
+            finish()
         }
     }
 

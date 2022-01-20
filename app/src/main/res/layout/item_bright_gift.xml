@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="160dp"
+    android:layout_height="254dp"
+    android:layout_margin="8dp">
+
+    <View
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/tile_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/headerImageView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="-8dp"
+        android:background="@drawable/bright_gift_bg"
+        app:layout_constraintBottom_toBottomOf="@id/progressView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/background" />
+
+    <ImageView
+        android:id="@+id/giftImageView"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/bright_gift"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/koni_black"
+        android:text="@string/bright_gift"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintBottom_toTopOf="@id/progressBgView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/giftImageView"
+        app:layout_constraintTop_toTopOf="@id/headerImageView" />
+
+    <View
+        android:id="@+id/progressBgView"
+        android:layout_width="0dp"
+        android:layout_height="14dp"
+        android:layout_margin="8dp"
+        android:background="@drawable/gift_progress_bg"
+        app:layout_constraintBottom_toBottomOf="@id/progressView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/progressView" />
+
+    <View
+        android:id="@+id/progressView"
+        android:layout_width="112dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bright_gift_progress"
+        app:layout_constraintStart_toStartOf="@id/progressBgView"
+        app:layout_constraintTop_toBottomOf="@id/giftImageView" />
+
+    <TextView
+        android:id="@+id/levelTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/level"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/progressBgView"
+        app:layout_constraintEnd_toEndOf="@id/progressBgView"
+        app:layout_constraintStart_toStartOf="@id/progressBgView"
+        app:layout_constraintTop_toTopOf="@id/progressBgView" />
+
+    <TextView
+        android:id="@+id/awardTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/gift_award"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerImageView" />
+
+    <!--    First Award -->
+
+    <View
+        android:id="@+id/firstAwardView"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_margin="8dp"
+        android:background="@drawable/gift_award_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/awardTitleTextView" />
+
+    <ImageView
+        android:id="@+id/firstAwardImageView"
+        android:layout_width="16dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/wand_label"
+        app:layout_constraintBottom_toBottomOf="@id/firstAwardView"
+        app:layout_constraintStart_toStartOf="@id/firstAwardView"
+        app:layout_constraintTop_toTopOf="@id/firstAwardView" />
+
+    <TextView
+        android:id="@+id/firstAwardTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:fontFamily="@font/koni_black"
+        android:text="1000 - 2000"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/firstAwardView"
+        app:layout_constraintEnd_toEndOf="@id/firstAwardView"
+        app:layout_constraintStart_toStartOf="@id/firstAwardView"
+        app:layout_constraintTop_toTopOf="@id/firstAwardView" />
+
+    <!--    Second Award -->
+
+    <View
+        android:id="@+id/secondAwardView"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_margin="8dp"
+        android:background="@drawable/gift_award_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/firstAwardView" />
+
+    <ImageView
+        android:id="@+id/secondAwardImageView"
+        android:layout_width="16dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/money_label"
+        app:layout_constraintBottom_toBottomOf="@id/secondAwardView"
+        app:layout_constraintStart_toStartOf="@id/secondAwardView"
+        app:layout_constraintTop_toTopOf="@id/secondAwardView" />
+
+    <TextView
+        android:id="@+id/secondAwardTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:fontFamily="@font/koni_black"
+        android:text="100 - 200"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/secondAwardView"
+        app:layout_constraintEnd_toEndOf="@id/secondAwardView"
+        app:layout_constraintStart_toStartOf="@id/secondAwardView"
+        app:layout_constraintTop_toTopOf="@id/secondAwardView" />
+
+    <!--    Third Award -->
+
+    <View
+        android:id="@+id/thirdAwardView"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_margin="8dp"
+        android:background="@drawable/gift_award_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/secondAwardView" />
+
+    <ImageView
+        android:id="@+id/thirdAwardImageView"
+        android:layout_width="16dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/tokens"
+        app:layout_constraintBottom_toBottomOf="@id/thirdAwardView"
+        app:layout_constraintStart_toStartOf="@id/thirdAwardView"
+        app:layout_constraintTop_toTopOf="@id/thirdAwardView" />
+
+    <TextView
+        android:id="@+id/thirdAwardTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:fontFamily="@font/koni_black"
+        android:text="12 - 17"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/thirdAwardView"
+        app:layout_constraintEnd_toEndOf="@id/thirdAwardView"
+        app:layout_constraintStart_toStartOf="@id/thirdAwardView"
+        app:layout_constraintTop_toTopOf="@id/thirdAwardView" />
+
+    <!--    Action Button -->
+
+    <Button
+        android:id="@+id/openButton"
+        style="@style/ActionButton"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_margin="8dp"
+        android:text="@string/open"
+        app:layout_constraintEnd_toStartOf="@id/countBgView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/thirdAwardView" />
+
+    <!--    Count -->
+
+    <View
+        android:id="@+id/countBgView"
+        android:layout_width="32dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/gift_award_bg"
+        app:layout_constraintBottom_toBottomOf="@id/openButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/openButton" />
+
+    <TextView
+        android:id="@+id/countTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:fontFamily="@font/koni_black"
+        android:text="x100"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/countBgView"
+        app:layout_constraintEnd_toEndOf="@id/countBgView"
+        app:layout_constraintStart_toStartOf="@id/countBgView"
+        app:layout_constraintTop_toTopOf="@id/countBgView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,4 +4,23 @@
     <string name="language">Язык</string>
     <string name="sound">Звук</string>
     <string name="music">Музыка</string>
+    <string name="bright_gift">Яркий подарок</string>
+    <string name="special_gift">Особый подарок</string>
+    <string name="fairytale_gift">Сказочный подарок</string>
+    <string name="gift_award">Можно получить:</string>
+    <string name="level">Уровень %1$d</string>
+    <string name="open">Открыть</string>
+    <string name="logout">Выйти</string>
+    <string name="stage">Стадия: %1$d/%2$d</string>
+    <string name="maiden">Диана Дамировна</string>
+    <string name="fatherFrost">Олег Алексеевич</string>
+    <string name="forest">Университетская роща</string>
+    <string name="hedgehog">Ёж</string>
+    <string name="university">Второй корпус</string>
+    <string name="upgrade">До улучшения: %1$d</string>
+    <string name="upgrade_reward">Награда\nза улучшение:</string>
+    <string name="record_book">Зачетная книжка</string>
+    <string name="midterms_progress">Сессия закрыта %1$d\%</string>
+    <string name="upgrade_btn">Улучшить</string>
+    <string name="stage_list">Стадия %1$d</string>
 </resources>
