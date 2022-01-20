@@ -35,7 +35,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".record_book.RecordBookActivity"
+            android:name=".activity_record_book.RecordBookActivity"
             android:exported="true"
             android:screenOrientation="landscape" />
         <activity

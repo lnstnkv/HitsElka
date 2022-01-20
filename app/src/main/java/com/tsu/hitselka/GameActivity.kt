@@ -3,7 +3,6 @@ package com.tsu.hitselka
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
-import android.util.Log
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -12,13 +11,12 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.Target
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.tsu.hitselka.activity_enhancement.EnhancementActivity
 import com.tsu.hitselka.activity_gifts.GiftsActivity
 import com.tsu.hitselka.databinding.ActivityGameBinding
 import com.tsu.hitselka.databinding.ControlsBinding
 import com.tsu.hitselka.model.SharedPrefs
 import com.tsu.hitselka.model.setFullscreen
-import com.tsu.hitselka.record_book.RecordBookActivity
+import com.tsu.hitselka.activity_record_book.RecordBookActivity
 import java.util.*
 
 class GameActivity : AppCompatActivity(R.layout.controls) {

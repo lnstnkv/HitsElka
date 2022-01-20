@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    tools:context=".record_book.RecordBookActivity">
+    tools:context=".activity_record_book.RecordBookActivity">
 
     <ImageView
         android:id="@+id/backgroundImageView"

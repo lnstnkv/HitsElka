@@ -1,9 +1,11 @@
-package com.tsu.hitselka.record_book
+package com.tsu.hitselka.activity_record_book
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tsu.hitselka.R
+import com.tsu.hitselka.activity_enhancement.EnhancementActivity
 import com.tsu.hitselka.databinding.ActivityRecordBookBinding
 import com.tsu.hitselka.model.Object
 import com.tsu.hitselka.model.setFullscreen
@@ -12,7 +14,8 @@ class RecordBookActivity : AppCompatActivity() {
     private val binding by lazy { ActivityRecordBookBinding.inflate(layoutInflater) }
     private val listener = object : ImprovementAdapter.ImprovementAdapterListener {
         override fun onItemClick(item: Object) {
-            println()
+            val intent = Intent(this@RecordBookActivity, EnhancementActivity::class.java)
+            startActivity(intent)
         }
     }
     private lateinit var adapter: ImprovementAdapter

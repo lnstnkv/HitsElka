@@ -1,4 +1,4 @@
-package com.tsu.hitselka.record_book
+package com.tsu.hitselka.activity_record_book
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -19,7 +19,6 @@ class ImprovementAdapter(
     private companion object {
         val DIFF = object : DiffUtil.ItemCallback<Object>() {
             override fun areItemsTheSame(oldItem: Object, newItem: Object) = oldItem == newItem
-
             override fun areContentsTheSame(oldItem: Object, newItem: Object) = oldItem == newItem
         }
     }
@@ -38,7 +37,7 @@ class ImprovementAdapter(
         private val binding = ItemImprovementBinding.bind(view)
 
         init {
-            binding.root.setOnClickListener {
+            binding.button.setOnClickListener {
                 listener.onItemClick(getItem(adapterPosition))
             }
         }

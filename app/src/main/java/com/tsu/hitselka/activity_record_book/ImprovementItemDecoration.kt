@@ -1,4 +1,4 @@
-package com.tsu.hitselka.record_book
+package com.tsu.hitselka.activity_record_book
 
 import android.graphics.Rect
 import android.view.View
