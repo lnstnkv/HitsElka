@@ -11,7 +11,7 @@ import com.tsu.hitselka.databinding.ItemImprovementBinding
 import com.tsu.hitselka.model.Object
 
 class ImprovementAdapter (
-    private val listener: ChatAdapterListener
+    private val listener: ImprovementAdapterListener
 ) : ListAdapter<Object, ImprovementAdapter.ViewHolder>(DIFF) {
 
     private companion object {
@@ -42,11 +42,12 @@ class ImprovementAdapter (
             }
         }
 
-        fun bind(profileItem: Object) = with(binding) {
+        fun bind(objects: Object) = with(binding) {
+
         }
     }
-}
 
-interface ChatAdapterListener {
+interface ImprovementAdapterListener {
     fun onItemClick(item: Object)
+}
 }

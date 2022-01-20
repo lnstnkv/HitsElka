@@ -38,7 +38,7 @@
 
     <TextView
         android:id="@+id/textViewStage"
-        style="@style/ImprovementLabel"
+        style="@style/ImprovementLabelSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -46,15 +46,16 @@
         app:layout_constraintEnd_toEndOf="@+id/imageViewBack"
         app:layout_constraintStart_toStartOf="@+id/imageViewBack"
         app:layout_constraintTop_toBottomOf="@+id/imageViewObject" />
+
     <View
         android:id="@+id/viewProgressLevel"
         android:layout_width="80dp"
         android:layout_height="8dp"
-        android:background="@drawable/label_bg"
         android:layout_marginTop="5dp"
+        android:background="@drawable/label_bg"
         app:layout_constraintEnd_toEndOf="@+id/imageViewObject"
         app:layout_constraintStart_toStartOf="@+id/imageViewObject"
-        app:layout_constraintTop_toBottomOf="@+id/textViewStage"/>
+        app:layout_constraintTop_toBottomOf="@+id/textViewStage" />
 
 
     <View
@@ -81,13 +82,14 @@
         android:id="@+id/button"
         style="@style/ActionButton"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="Button"
+        android:layout_height="12dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/improve"
         app:layout_constraintBottom_toBottomOf="@+id/imageViewBack"
-        app:layout_constraintEnd_toEndOf="@+id/imageViewBack"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/imageViewBack" />
+        app:layout_constraintEnd_toEndOf="@+id/viewProgressLevel"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/viewProgressLevel"
+        tools:ignore="TouchTargetSizeCheck" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
