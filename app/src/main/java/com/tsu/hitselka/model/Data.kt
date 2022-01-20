@@ -44,3 +44,8 @@ data class Settings(
     val music: Boolean = true,
     val sound: Boolean = true,
 )
+
+data class Object(
+    val type: String,
+    val improvements: Int
+)
