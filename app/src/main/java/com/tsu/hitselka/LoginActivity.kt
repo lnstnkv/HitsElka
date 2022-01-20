@@ -44,6 +44,7 @@ class LoginActivity : AppCompatActivity(R.layout.activity_login) {
                     }
                 } catch (e: ApiException) {
                     Log.d("Auth", "Api exception")
+                    Log.d("Auth", e.toString())
                 }
             }
 
