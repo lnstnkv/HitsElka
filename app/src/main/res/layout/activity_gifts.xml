@@ -21,7 +21,7 @@
         android:id="@+id/closeButton"
         android:layout_width="48dp"
         android:layout_height="32dp"
-        android:layout_margin="32dp"
+        android:layout_margin="16dp"
         android:background="@drawable/btn_close"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
