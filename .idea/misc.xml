@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects/BubbleSortRun/app/src/main/res/drawable/action_btn.xml" value="0.22239583333333332" />
         <entry key="..\:/AndroidStudioProjects/BubbleSortRun/app/src/main/res/drawable/btn_close.xml" value="0.22239583333333332" />
         <entry key="..\:/AndroidStudioProjects/BubbleSortRun/app/src/main/res/drawable/btn_settings.xml" value="0.22239583333333332" />
         <entry key="..\:/AndroidStudioProjects/BubbleSortRun/app/src/main/res/drawable/btn_settings_lang.xml" value="0.22239583333333332" />
@@ -16,11 +17,13 @@
         <entry key="..\:/AndroidStudioProjects/BubbleSortRun/app/src/main/res/drawable/label_progress.xml" value="0.22239583333333332" />
         <entry key="..\:/AndroidStudioProjects/BubbleSortRun/app/src/main/res/drawable/label_progress_object.xml" value="0.3828125" />
         <entry key="..\:/AndroidStudioProjects/BubbleSortRun/app/src/main/res/layout/activity_game.xml" value="0.13768115942028986" />
+        <entry key="..\:/AndroidStudioProjects/BubbleSortRun/app/src/main/res/layout/activity_gifts.xml" value="0.20625" />
         <entry key="..\:/AndroidStudioProjects/BubbleSortRun/app/src/main/res/layout/activity_login.xml" value="0.2046875" />
         <entry key="..\:/AndroidStudioProjects/BubbleSortRun/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/AndroidStudioProjects/BubbleSortRun/app/src/main/res/layout/activity_record_book.xml" value="0.4253472222222222" />
         <entry key="..\:/AndroidStudioProjects/BubbleSortRun/app/src/main/res/layout/activity_settings.xml" value="0.24805598755832037" />
         <entry key="..\:/AndroidStudioProjects/BubbleSortRun/app/src/main/res/layout/controls.xml" value="1.1" />
+        <entry key="..\:/AndroidStudioProjects/BubbleSortRun/app/src/main/res/layout/item_bright_gift.xml" value="0.75" />
         <entry key="..\:/AndroidStudioProjects/BubbleSortRun/app/src/main/res/layout/item_improvement.xml" value="0.782608695652174" />
         <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/drawable-v24/profile_image.xml" value="0.2484375" />
         <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/drawable/label_bg.xml" value="0.2484375" />
