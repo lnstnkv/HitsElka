@@ -50,13 +50,13 @@
 
     <ImageView
         android:id="@+id/progressImageView"
-        android:layout_width="wrap_content"
+        android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_margin="16dp"
         android:adjustViewBounds="true"
         android:src="@drawable/progress_label"
-        tools:layout_editor_absoluteX="494dp"
-        tools:layout_editor_absoluteY="128dp" />
+        tools:layout_editor_absoluteX="499dp"
+        tools:layout_editor_absoluteY="112dp" />
 
     <TextView
         android:id="@+id/textViewClose"

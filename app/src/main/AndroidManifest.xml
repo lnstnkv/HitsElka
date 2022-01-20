@@ -29,11 +29,12 @@
         <activity
             android:name=".LoginActivity"
             android:exported="true"
-            android:screenOrientation="landscape" />
-        <activity
-            android:name=".GameActivity"
-            android:exported="true"
-            android:screenOrientation="landscape" />
-    </application>
+            android:screenOrientation="landscape">
+    </activity>
+    <activity
+        android:name=".GameActivity"
+        android:exported="true"
+        android:screenOrientation="landscape" />
+</application>
 
-</manifest>
+    </manifest>
