@@ -13,9 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HitsElka">
         <activity
+            android:name=".activity_enhancement.EnhancementActivity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
             android:name=".activity_gifts.GiftsActivity"
             android:exported="false"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".SettingsActivity"
             android:exported="false"

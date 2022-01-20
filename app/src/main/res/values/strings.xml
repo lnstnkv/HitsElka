@@ -11,4 +11,12 @@
     <string name="level">Уровень %1$d</string>
     <string name="open">Открыть</string>
     <string name="logout">Выйти</string>
+    <string name="stage">Стадия: %1$d/%2$d</string>
+    <string name="maiden">Диана Дамировна</string>
+    <string name="fatherFrost">Олег Алексеевич</string>
+    <string name="forest">Университетская роща</string>
+    <string name="hedgehog">Ёж</string>
+    <string name="university">Второй корпус</string>
+    <string name="upgrade">До улучшения: %1$d</string>
+    <string name="upgradeReward">Награда\nза улучшение:</string>
 </resources>

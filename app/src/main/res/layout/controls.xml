@@ -99,19 +99,10 @@
         android:layout_width="80dp"
         android:layout_height="20dp"
         android:layout_marginStart="32dp"
-        android:background="@drawable/label_bg"
+        android:background="@drawable/label_level_bg"
         app:layout_constraintBottom_toBottomOf="@id/levelImageView"
         app:layout_constraintStart_toEndOf="@id/profileBgView"
         app:layout_constraintTop_toTopOf="@id/levelImageView" />
-
-    <View
-        android:layout_width="76dp"
-        android:layout_height="16dp"
-        android:background="@drawable/label_inner_bg"
-        app:layout_constraintBottom_toBottomOf="@id/levelBgView"
-        app:layout_constraintEnd_toEndOf="@id/levelBgView"
-        app:layout_constraintStart_toStartOf="@id/levelBgView"
-        app:layout_constraintTop_toTopOf="@id/levelBgView" />
 
     <View
         android:id="@+id/levelFillView"

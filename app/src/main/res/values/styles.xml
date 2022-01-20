@@ -8,7 +8,7 @@
     </style>
 
     <style name="LabelText">
-        <item name="android:layout_marginBottom">-3dp</item>
+        <item name="android:layout_marginTop">1dp</item>
         <item name="fontFamily">@font/koni_black</item>
         <item name="android:includeFontPadding">false</item>
         <item name="android:shadowColor">#10759C</item>

@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context=".activity_enhancement.EnhancementActivity">
+
+    <ImageView
+        android:id="@+id/backgroundImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background_blur"
+        android:tint="#7F083D7C"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/closeButton"
+        android:layout_width="48dp"
+        android:layout_height="32dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/btn_close"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--    Level -->
+
+    <View
+        android:id="@+id/levelBgView"
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:background="@drawable/label_level_bg"
+        app:layout_constraintBottom_toBottomOf="@id/levelImageView"
+        app:layout_constraintEnd_toStartOf="@id/wandBgView"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/levelImageView" />
+
+    <View
+        android:id="@+id/levelFillView"
+        android:layout_width="38dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="2dp"
+        android:background="@drawable/label_fill_bg"
+        app:layout_constraintBottom_toBottomOf="@id/levelBgView"
+        app:layout_constraintStart_toStartOf="@id/levelBgView"
+        app:layout_constraintTop_toTopOf="@id/levelBgView" />
+
+    <TextView
+        android:id="@+id/levelTextView"
+        style="@style/LabelText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="1"
+        app:layout_constraintBottom_toBottomOf="@id/levelBgView"
+        app:layout_constraintEnd_toEndOf="@id/levelBgView"
+        app:layout_constraintStart_toEndOf="@id/levelImageView"
+        app:layout_constraintTop_toTopOf="@id/levelBgView" />
+
+    <ImageView
+        android:id="@+id/levelImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_marginStart="-16dp"
+        android:layout_marginTop="16dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/level_label"
+        app:layout_constraintStart_toStartOf="@id/levelBgView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--    Wands -->
+
+    <View
+        android:id="@+id/wandBgView"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/label_bg"
+        app:layout_constraintBottom_toBottomOf="@id/wandImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/levelBgView"
+        app:layout_constraintTop_toTopOf="@id/wandImageView" />
+
+    <TextView
+        android:id="@+id/wandTextView"
+        style="@style/LabelText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="@id/wandBgView"
+        app:layout_constraintEnd_toEndOf="@id/wandBgView"
+        app:layout_constraintStart_toEndOf="@id/wandImageView"
+        app:layout_constraintTop_toTopOf="@id/wandBgView" />
+
+    <ImageView
+        android:id="@+id/wandImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="-20dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/wand_label"
+        app:layout_constraintEnd_toStartOf="@id/wandBgView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!--    Object Info -->
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/koni_black"
+        android:includeFontPadding="false"
+        android:text="@string/maiden"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/levelBgView" />
+
+    <TextView
+        android:id="@+id/stageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/stage"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleTextView" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginVertical="16dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/winter_maiden"
+        app:layout_constraintBottom_toTopOf="@id/progressBgView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stageTextView" />
+
+    <!--    Progress -->
+
+    <View
+        android:id="@+id/progressBgView"
+        android:layout_width="288dp"
+        android:layout_height="22dp"
+        android:layout_margin="8dp"
+        android:background="@drawable/gift_progress_bg"
+        app:layout_constraintBottom_toBottomOf="@id/progressView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/progressView" />
+
+    <View
+        android:id="@+id/progressView"
+        android:layout_width="112dp"
+        android:layout_height="24dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/upgrade_progress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/progressBgView" />
+
+    <TextView
+        android:id="@+id/progressTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/upgrade"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/progressBgView"
+        app:layout_constraintEnd_toEndOf="@id/progressBgView"
+        app:layout_constraintStart_toStartOf="@id/progressBgView"
+        app:layout_constraintTop_toTopOf="@id/progressBgView" />
+
+    <!--    Reward -->
+
+    <TextView
+        android:id="@+id/rewardTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:fontFamily="@font/koni_black"
+        android:shadowColor="@color/black"
+        android:shadowRadius="2"
+        android:text="@string/upgradeReward"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/rewardImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <View
+        android:background="@drawable/tile_bg"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="@id/rewardImageView"
+        app:layout_constraintBottom_toBottomOf="@id/rewardTextView"
+        app:layout_constraintStart_toStartOf="@id/rewardImageView"
+        app:layout_constraintEnd_toEndOf="@id/rewardImageView"
+        android:layout_marginTop="-12dp"
+        android:layout_marginBottom="-12dp"
+        android:layout_marginStart="-12dp"
+        android:layout_marginEnd="-12dp"/>
+
+    <ImageView
+        android:id="@+id/rewardImageView"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="28dp"
+        android:src="@drawable/special_gift"
+        app:layout_constraintBottom_toTopOf="@id/rewardTextView"
+        app:layout_constraintEnd_toEndOf="@id/rewardTitleTextView"
+        app:layout_constraintStart_toStartOf="@id/rewardTitleTextView"
+        app:layout_constraintTop_toBottomOf="@id/rewardTitleTextView" />
+
+    <TextView
+        android:id="@+id/rewardTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="2"
+        android:includeFontPadding="false"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/rewardImageView"
+        app:layout_constraintStart_toStartOf="@id/rewardImageView"
+        app:layout_constraintTop_toBottomOf="@id/rewardImageView" />
+
+<!--    Wand Button -->
+
+    <Button
+        android:id="@+id/wandButton"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:background="@drawable/ic_wand"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="16dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

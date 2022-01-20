@@ -12,4 +12,12 @@
     <string name="level">Level %1$d</string>
     <string name="open">Open</string>
     <string name="logout">Logout</string>
+    <string name="stage">Stage: %1%d/%2$d</string>
+    <string name="maiden">Diana Damirovna</string>
+    <string name="fatherFrost">Oleg Alexeevich</string>
+    <string name="forest">University Grove</string>
+    <string name="hedgehog">Hedgehog</string>
+    <string name="university">Second Building</string>
+    <string name="upgrade">Until upgrade: %1$d</string>
+    <string name="upgradeReward">Reward\nfor upgrading:</string>
 </resources>

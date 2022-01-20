@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.Target
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.tsu.hitselka.activity_enhancement.EnhancementActivity
 import com.tsu.hitselka.activity_gifts.GiftsActivity
 import com.tsu.hitselka.databinding.ActivityGameBinding
 import com.tsu.hitselka.databinding.ControlsBinding
@@ -68,8 +69,9 @@ class GameActivity : AppCompatActivity(R.layout.controls) {
         }
 
         controls.wandView.setOnClickListener {
-            Toast.makeText(this, "Enhance", Toast.LENGTH_SHORT).show()
             playClickSound()
+            val intent = Intent(this, EnhancementActivity::class.java)
+            startActivity(intent)
         }
 
         controls.settingsImageView.setOnClickListener {
