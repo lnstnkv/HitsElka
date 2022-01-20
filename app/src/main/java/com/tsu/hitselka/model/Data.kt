@@ -47,5 +47,6 @@ data class Settings(
 
 data class Object(
     val type: String,
+    val level:Int,
     val improvements: Int
 )

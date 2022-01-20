@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.tsu.hitselka.databinding.ItemImprovementBinding
 import com.tsu.hitselka.model.Object
 
-class ImprovementAdapter (
+class ImprovementAdapter(
     private val listener: ImprovementAdapterListener
 ) : ListAdapter<Object, ImprovementAdapter.ViewHolder>(DIFF) {
 
@@ -47,7 +47,7 @@ class ImprovementAdapter (
         }
     }
 
-interface ImprovementAdapterListener {
-    fun onItemClick(item: Object)
-}
+    interface ImprovementAdapterListener {
+        fun onItemClick(item: Object)
+    }
 }
