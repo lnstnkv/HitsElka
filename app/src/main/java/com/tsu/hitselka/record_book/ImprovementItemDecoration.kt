@@ -5,7 +5,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.tsu.hitselka.R
 
-class ImprovementItemDecoration:RecyclerView.ItemDecoration(){
+class ImprovementItemDecoration : RecyclerView.ItemDecoration() {
     override fun getItemOffsets(
         outRect: Rect,
         view: View,
@@ -16,20 +16,13 @@ class ImprovementItemDecoration:RecyclerView.ItemDecoration(){
         val position = parent.getChildAdapterPosition(view)
         if (position == RecyclerView.NO_POSITION) return
 
-
-        val margin4 = parent.context.resources.getDimensionPixelSize(R.dimen.margin_4)
-        val margin8 = parent.context.resources.getDimensionPixelSize(R.dimen.margin_8)
-
+        val sideMargin = parent.context.resources.getDimensionPixelSize(R.dimen.side_margin)
+        val margin = parent.context.resources.getDimensionPixelSize(R.dimen.margin_8)
 
         val newRect = when (position) {
-            0 -> Rect(margin8, margin4, margin4, margin4)
-            state.itemCount-1-> Rect(margin4, margin4, margin8, margin4)
-
-            else -> {
-                    Rect(margin4, margin4, margin4, margin4)
-            }
-
-
+            0 -> Rect(sideMargin, 0, margin, 0)
+            state.itemCount-1 -> Rect(0, 0, sideMargin, 0)
+            else -> Rect(margin, 0, margin, 0)
         }
 
         outRect.apply {

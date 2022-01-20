@@ -18,6 +18,7 @@ import com.tsu.hitselka.databinding.ActivityGameBinding
 import com.tsu.hitselka.databinding.ControlsBinding
 import com.tsu.hitselka.model.SharedPrefs
 import com.tsu.hitselka.model.setFullscreen
+import com.tsu.hitselka.record_book.RecordBookActivity
 import java.util.*
 
 class GameActivity : AppCompatActivity(R.layout.controls) {
@@ -70,7 +71,7 @@ class GameActivity : AppCompatActivity(R.layout.controls) {
 
         controls.wandView.setOnClickListener {
             playClickSound()
-            val intent = Intent(this, EnhancementActivity::class.java)
+            val intent = Intent(this, RecordBookActivity::class.java)
             startActivity(intent)
         }
 

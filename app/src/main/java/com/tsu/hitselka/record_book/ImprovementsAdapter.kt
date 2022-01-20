@@ -1,5 +1,6 @@
 package com.tsu.hitselka.record_book
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import com.tsu.hitselka.databinding.ItemImprovementBinding
 import com.tsu.hitselka.model.Object
 
 class ImprovementAdapter(
+    private val context: Context,
     private val listener: ImprovementAdapterListener
 ) : ListAdapter<Object, ImprovementAdapter.ViewHolder>(DIFF) {
 
@@ -24,8 +26,7 @@ class ImprovementAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            LayoutInflater
-                .from(parent.context).inflate(R.layout.item_improvement, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_improvement, parent, false)
         )
     }
 
@@ -38,16 +39,15 @@ class ImprovementAdapter(
 
         init {
             binding.root.setOnClickListener {
-                listener.onItemClick(getItem(bindingAdapterPosition))
+                listener.onItemClick(getItem(adapterPosition))
             }
         }
 
         fun bind(objects: Object) = with(binding) {
-            imageViewObject.setImageResource(objects.image)
-            textViewImprovement.text = objects.improvements.toString()
-            textViewStage.text=objects.level.toString()
-            textViewName.text=objects.type
-
+            objectImageView.setImageResource(objects.image)
+            progressTextView.text = "0%"
+            stageTextView.text = context.resources.getString(R.string.stage_list, objects.level)
+            titleTextView.text = objects.type
         }
     }
 

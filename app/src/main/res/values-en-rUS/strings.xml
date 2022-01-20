@@ -23,4 +23,5 @@
     <string name="record_book">Record book</string>
     <string name="midterms_progress">Midterms passed at %1$d\%</string>
     <string name="upgrade_btn">Upgrade</string>
+    <string name="stage_list">Stage %1$d</string>
 </resources>

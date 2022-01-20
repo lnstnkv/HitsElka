@@ -1,7 +1,7 @@
 package com.tsu.hitselka.record_book
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tsu.hitselka.R
 import com.tsu.hitselka.databinding.ActivityRecordBookBinding
@@ -9,44 +9,45 @@ import com.tsu.hitselka.model.Object
 import com.tsu.hitselka.model.setFullscreen
 
 class RecordBookActivity : AppCompatActivity() {
-
     private val binding by lazy { ActivityRecordBookBinding.inflate(layoutInflater) }
-    private val improveAdapterListener = object : ImprovementAdapter.ImprovementAdapterListener {
-
+    private val listener = object : ImprovementAdapter.ImprovementAdapterListener {
         override fun onItemClick(item: Object) {
             println()
         }
     }
-    private val improvementAdapter = ImprovementAdapter(improveAdapterListener)
-    private fun initView() = with(binding) {
-        recordRecycler.layoutManager =
-            LinearLayoutManager(this@RecordBookActivity,LinearLayoutManager.HORIZONTAL,false)
-        recordRecycler.apply {
-            adapter = improvementAdapter
-            addItemDecoration(ImprovementItemDecoration())
-        }
-        val improvement = mutableListOf<Object>()
+    private lateinit var adapter: ImprovementAdapter
 
-        improvement.add(Object("Hedgehog", R.drawable.hedgehog,0, 0))
-        improvement.add(Object("Winter Maiden",  R.drawable.winter_maiden,0, 0))
-        improvement.add(Object("Father Frost",  R.drawable.father_frost,0, 0))
-        improvement.add(Object("University", R.drawable.university, 0, 0))
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(binding.root)
+        initRecyclerView()
+        initListeners()
+        setFullscreen()
+    }
 
-        improvementAdapter.submitList(improvement)
+    private fun initRecyclerView() {
+        adapter = ImprovementAdapter(this, listener)
+
+        binding.recyclerView.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        binding.recyclerView.adapter = adapter
+        binding.recyclerView.addItemDecoration(ImprovementItemDecoration())
+
+        val objects = mutableListOf<Object>()
+        objects.add(Object("Hedgehog", R.drawable.hedgehog, 2, 0))
+        objects.add(Object("Winter Maiden", R.drawable.winter_maiden, 2, 0))
+        objects.add(Object("Father Frost", R.drawable.father_frost, 2, 0))
+        objects.add(Object("University", R.drawable.university, 2, 0))
+        objects.add(Object("Hedgehog", R.drawable.hedgehog, 3, 0))
+        objects.add(Object("Winter Maiden", R.drawable.winter_maiden, 3, 0))
+        objects.add(Object("Father Frost", R.drawable.father_frost, 3, 0))
+        objects.add(Object("University", R.drawable.university, 3, 0))
+        adapter.submitList(objects)
     }
 
     private fun initListeners() {
         binding.closeBtnView.setOnClickListener {
             finish()
         }
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(binding.root)
-        initView()
-        initListeners()
-        setFullscreen()
-
     }
 }

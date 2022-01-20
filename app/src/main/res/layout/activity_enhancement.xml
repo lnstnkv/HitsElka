@@ -191,7 +191,7 @@
         android:fontFamily="@font/koni_black"
         android:shadowColor="@color/black"
         android:shadowRadius="2"
-        android:text="@string/upgradeReward"
+        android:text="@string/upgrade_reward"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="16sp"

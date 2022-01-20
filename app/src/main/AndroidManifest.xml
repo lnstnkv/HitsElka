@@ -37,21 +37,11 @@
         <activity
             android:name=".record_book.RecordBookActivity"
             android:exported="true"
-            android:screenOrientation="landscape">
-        </activity>
-        <activity
-            android:name=".SettingsActivity"
-            android:exported="false"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".GameActivity"
             android:exported="true"
-            android:screenOrientation="landscape">
-    </activity>
-    <activity
-        android:name=".GameActivity"
-        android:exported="true"
-        android:screenOrientation="landscape" />
-</application>
+            android:screenOrientation="landscape" />
+    </application>
 
-    </manifest>
+</manifest>

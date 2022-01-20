@@ -16,6 +16,8 @@
         <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/drawable/btn_settings_lang.xml" value="0.2484375" />
         <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/drawable/btn_settings_music.xml" value="0.2484375" />
         <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/drawable/btn_settings_sound.xml" value="0.2484375" />
+        <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/drawable/enhancement_progress.xml" value="0.2484375" />
+        <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/drawable/enhancement_progress_bg.xml" value="0.2484375" />
         <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/drawable/fairytale_gift_progress.xml" value="0.2484375" />
         <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/drawable/gift_award_bg.xml" value="0.2484375" />
         <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/drawable/gift_progress_bg.xml" value="0.2484375" />
@@ -24,7 +26,11 @@
         <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/drawable/ic_sound_on.xml" value="0.2484375" />
         <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/drawable/label_bg.xml" value="0.8" />
         <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/drawable/label_fill_bg.xml" value="0.2484375" />
+        <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/drawable/label_image.xml" value="0.2484375" />
         <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/drawable/label_inner_bg.xml" value="0.2484375" />
+        <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/drawable/label_inner_bg_8.xml" value="0.2484375" />
+        <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/drawable/label_progress.xml" value="0.2484375" />
+        <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/drawable/label_progress_object.xml" value="0.2484375" />
         <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/drawable/profile_bg.xml" value="0.2484375" />
         <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/drawable/profile_bg_color.xml" value="0.24583333333333332" />
         <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/drawable/profile_image.xml" value="0.2484375" />
@@ -44,12 +50,14 @@
         <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/layout/activity_gifts.xml" value="0.264" />
         <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/layout/activity_main.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/layout/activity_record_book.xml" value="0.40524781341107874" />
         <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/layout/activity_settings.xml" value="0.2" />
         <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/layout/controls.xml" value="0.264" />
         <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/layout/game_fragment.xml" value="0.23229166666666667" />
-        <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/layout/item_bright_gift.xml" value="0.264" />
+        <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/layout/item_bright_gift.xml" value="0.72" />
         <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/layout/item_fairytale_gift.xml" value="0.72" />
         <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/layout/item_gift.xml" value="0.8800000000000001" />
+        <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/layout/item_improvement.xml" value="0.8" />
         <entry key="..\:/Users/Chantreck/Documents/Git/BubblesortRun-Android/app/src/main/res/layout/item_special_gift.xml" value="0.264" />
       </map>
     </option>

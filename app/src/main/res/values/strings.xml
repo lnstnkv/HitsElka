@@ -18,8 +18,9 @@
     <string name="hedgehog">Ёж</string>
     <string name="university">Второй корпус</string>
     <string name="upgrade">До улучшения: %1$d</string>
-    <string name="upgradeReward">Награда\nза улучшение:</string>
+    <string name="upgrade_reward">Награда\nза улучшение:</string>
     <string name="record_book">Зачетная книжка</string>
     <string name="midterms_progress">Сессия закрыта %1$d\%</string>
     <string name="upgrade_btn">Улучшить</string>
+    <string name="stage_list">Стадия %1$d</string>
 </resources>

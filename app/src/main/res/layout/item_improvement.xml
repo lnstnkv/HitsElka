@@ -3,103 +3,110 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="136dp"
-    android:layout_margin="@dimen/margin_8"
-    android:layout_height="match_parent">
+    android:layout_height="216dp">
 
-    <ImageView
-        android:id="@+id/imageViewBack"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+    <View
+        android:id="@+id/backgroundImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/tile_bg"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bg_recycler" />
-
-    <TextView
-        android:id="@+id/textViewName"
-        style="@style/ImprovementLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="@string/teacher"
-        app:layout_constraintEnd_toEndOf="@+id/imageViewBack"
-        app:layout_constraintStart_toStartOf="@+id/imageViewBack"
-        app:layout_constraintTop_toTopOf="@+id/imageViewBack" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageViewObject"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/label_image"
-        app:layout_constraintEnd_toEndOf="@+id/imageViewBack"
-        app:layout_constraintStart_toStartOf="@+id/imageViewBack"
-        app:layout_constraintTop_toBottomOf="@+id/textViewName"
-        app:srcCompat="@drawable/hedgehog" />
+        android:id="@+id/headerImageView"
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewStage"
-        style="@style/ImprovementLabelSmall"
+        android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="@string/level"
-        app:layout_constraintEnd_toEndOf="@+id/imageViewBack"
-        app:layout_constraintStart_toStartOf="@+id/imageViewBack"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewObject" />
+        android:fontFamily="@font/koni_black"
+        android:text="@string/maiden"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@id/headerImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/objectImageView"
+        android:layout_width="0dp"
+        android:layout_height="96dp"
+        android:layout_margin="8dp"
+        android:background="@drawable/label_image"
+        android:padding="8dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/hedgehog"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerImageView" />
+
+    <TextView
+        android:id="@+id/stageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/stage_list"
+        android:textColor="@color/white"
+        android:textSize="9sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/objectImageView" />
 
     <View
-        android:id="@+id/viewProgressLevel"
-        android:layout_width="80dp"
-        android:layout_height="8dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/label_bg"
-        app:layout_constraintEnd_toEndOf="@+id/imageViewObject"
-        app:layout_constraintStart_toStartOf="@+id/imageViewObject"
-        app:layout_constraintTop_toBottomOf="@+id/textViewStage" />
-
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="78dp"
-        android:layout_height="6dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
-        android:background="@drawable/label_inner_bg_8"
-        app:layout_constraintEnd_toEndOf="@+id/viewProgressLevel"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/viewProgressLevel"
-        app:layout_constraintTop_toTopOf="@+id/viewProgressLevel" />
+        android:id="@+id/progressBgView"
+        android:layout_width="0dp"
+        android:layout_height="14dp"
+        android:layout_margin="8dp"
+        android:background="@drawable/enhancement_progress_bg"
+        app:layout_constraintBottom_toBottomOf="@id/progressView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/progressView" />
 
     <View
-        android:id="@+id/viewProgress"
-        android:layout_width="20dp"
-        android:layout_height="8dp"
-        android:background="@drawable/label_progress_object"
-        app:layout_constraintStart_toStartOf="@+id/viewProgressLevel"
-        app:layout_constraintTop_toTopOf="@+id/viewProgressLevel" />
+        android:id="@+id/progressView"
+        android:layout_width="42dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/enhancement_progress"
+        app:layout_constraintStart_toStartOf="@id/progressBgView"
+        app:layout_constraintTop_toBottomOf="@id/stageTextView" />
+
+    <TextView
+        android:id="@+id/progressTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="20%"
+        android:textColor="@color/white"
+        android:textSize="9sp"
+        app:layout_constraintBottom_toBottomOf="@id/progressBgView"
+        app:layout_constraintEnd_toEndOf="@+id/progressBgView"
+        app:layout_constraintTop_toTopOf="@+id/progressBgView" />
 
     <Button
         android:id="@+id/button"
         style="@style/ActionButton"
         android:layout_width="0dp"
-        android:layout_height="12dp"
-        android:layout_marginBottom="10dp"
-        android:text="@string/improve"
-        app:layout_constraintBottom_toBottomOf="@+id/imageViewBack"
-        app:layout_constraintEnd_toEndOf="@+id/viewProgressLevel"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/viewProgressLevel"
-        tools:ignore="TouchTargetSizeCheck" />
+        android:layout_height="24dp"
+        android:layout_margin="8dp"
+        android:text="@string/upgrade_btn"
+        app:layout_constraintTop_toBottomOf="@id/progressView"
 
-    <TextView
-        android:id="@+id/textViewImprovement"
-        style="@style/ImprovementLabelSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="6dp"
-        android:layout_marginEnd="5dp"
-        android:text="@string/improvement"
-        app:layout_constraintEnd_toEndOf="@+id/viewProgressLevel"
-        app:layout_constraintTop_toTopOf="@+id/viewProgressLevel" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TouchTargetSizeCheck" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

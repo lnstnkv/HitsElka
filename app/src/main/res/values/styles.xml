@@ -53,15 +53,4 @@
         <item name="android:textSize">12sp</item>
         <item name="android:fontFamily">@font/koni_black</item>
     </style>
-
-    <style name="ImprovementLabel">
-        <item name="fontFamily">@font/koni_black</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textSize">7sp</item>
-        <item name="android:textAlignment">center</item>
-    </style>
-
-    <style name="ImprovementLabelSmall" parent="ImprovementLabel">
-        <item name="android:textSize">5sp</item>
-    </style>
 </resources>
