@@ -32,7 +32,7 @@ object GameLogic {
         for (building in objects) {
             val image = when (building) {
                 "university" -> R.drawable.university
-                "forest" -> R.drawable.hedgehog
+                "forest" -> R.drawable.forest
                 "hedgehog" -> R.drawable.hedgehog
                 "maiden" -> R.drawable.winter_maiden
                 "father_frost" -> R.drawable.father_frost
