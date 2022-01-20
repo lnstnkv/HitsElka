@@ -58,3 +58,9 @@ data class Object(
     val level:Int,
     val improvements: Int
 )
+
+data class ItemShop(
+    val name:String,
+    val image:Int,
+    val cost:Int
+)

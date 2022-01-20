@@ -4,6 +4,7 @@
     <string name="language">Язык</string>
     <string name="sound">Звук</string>
     <string name="music">Музыка</string>
+    <string name="shop">Магазин</string>
     <string name="bright_gift">Яркий подарок</string>
     <string name="special_gift">Особый подарок</string>
     <string name="fairytale_gift">Сказочный подарок</string>
@@ -23,4 +24,5 @@
     <string name="midterms_progress">Сессия закрыта %1$d\%</string>
     <string name="upgrade_btn">Улучшить</string>
     <string name="stage_list">Стадия %1$d</string>
+    <string name="cup">Кубок</string>
 </resources>
