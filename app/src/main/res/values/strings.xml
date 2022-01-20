@@ -4,4 +4,6 @@
     <string name="language">Язык</string>
     <string name="sound">Звук</string>
     <string name="music">Музыка</string>
+    <string name="record_book">Зачетная книжка</string>
+
 </resources>
