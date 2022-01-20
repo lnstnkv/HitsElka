@@ -7,4 +7,5 @@
     <string name="record_book">Зачетная книжка</string>
     <string name="teacher">Диана Дамировна</string>
     <string name="close_session">Сессия закрыта на 32%</string>
+    <string name="level">Стадия 1</string>
 </resources>
