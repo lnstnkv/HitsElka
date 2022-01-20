@@ -19,4 +19,7 @@
     <string name="university">Второй корпус</string>
     <string name="upgrade">До улучшения: %1$d</string>
     <string name="upgradeReward">Награда\nза улучшение:</string>
+    <string name="record_book">Зачетная книжка</string>
+    <string name="midterms_progress">Сессия закрыта %1$d\%</string>
+    <string name="upgrade_btn">Улучшить</string>
 </resources>

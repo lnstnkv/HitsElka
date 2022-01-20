@@ -19,5 +19,8 @@
     <string name="hedgehog">Hedgehog</string>
     <string name="university">Second Building</string>
     <string name="upgrade">Until upgrade: %1$d</string>
-    <string name="upgradeReward">Reward\nfor upgrading:</string>
+    <string name="upgrade_reward">Reward\nfor upgrading:</string>
+    <string name="record_book">Record book</string>
+    <string name="midterms_progress">Midterms passed at %1$d\%</string>
+    <string name="upgrade_btn">Upgrade</string>
 </resources>

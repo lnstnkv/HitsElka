@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="136dp"
+    android:layout_margin="@dimen/margin_8"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imageViewBack"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bg_recycler" />
+
+    <TextView
+        android:id="@+id/textViewName"
+        style="@style/ImprovementLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/teacher"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewBack"
+        app:layout_constraintStart_toStartOf="@+id/imageViewBack"
+        app:layout_constraintTop_toTopOf="@+id/imageViewBack" />
+
+    <ImageView
+        android:id="@+id/imageViewObject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/label_image"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewBack"
+        app:layout_constraintStart_toStartOf="@+id/imageViewBack"
+        app:layout_constraintTop_toBottomOf="@+id/textViewName"
+        app:srcCompat="@drawable/hedgehog" />
+
+    <TextView
+        android:id="@+id/textViewStage"
+        style="@style/ImprovementLabelSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/level"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewBack"
+        app:layout_constraintStart_toStartOf="@+id/imageViewBack"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewObject" />
+
+    <View
+        android:id="@+id/viewProgressLevel"
+        android:layout_width="80dp"
+        android:layout_height="8dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/label_bg"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewObject"
+        app:layout_constraintStart_toStartOf="@+id/imageViewObject"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStage" />
+
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="78dp"
+        android:layout_height="6dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:background="@drawable/label_inner_bg_8"
+        app:layout_constraintEnd_toEndOf="@+id/viewProgressLevel"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/viewProgressLevel"
+        app:layout_constraintTop_toTopOf="@+id/viewProgressLevel" />
+
+    <View
+        android:id="@+id/viewProgress"
+        android:layout_width="20dp"
+        android:layout_height="8dp"
+        android:background="@drawable/label_progress_object"
+        app:layout_constraintStart_toStartOf="@+id/viewProgressLevel"
+        app:layout_constraintTop_toTopOf="@+id/viewProgressLevel" />
+
+    <Button
+        android:id="@+id/button"
+        style="@style/ActionButton"
+        android:layout_width="0dp"
+        android:layout_height="12dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/improve"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewBack"
+        app:layout_constraintEnd_toEndOf="@+id/viewProgressLevel"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/viewProgressLevel"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/textViewImprovement"
+        style="@style/ImprovementLabelSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="6dp"
+        android:layout_marginEnd="5dp"
+        android:text="@string/improvement"
+        app:layout_constraintEnd_toEndOf="@+id/viewProgressLevel"
+        app:layout_constraintTop_toTopOf="@+id/viewProgressLevel" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
