@@ -20,7 +20,9 @@ import com.tsu.hitselka.databinding.ControlsBinding
 import com.tsu.hitselka.inventory.InventoryActivity
 import com.tsu.hitselka.model.SharedPrefs
 import com.tsu.hitselka.model.setFullscreen
-import com.tsu.hitselka.record_book.RecordBookActivity
+import com.tsu.hitselka.activity_record_book.RecordBookActivity
+import com.tsu.hitselka.model.GameData
+import com.tsu.hitselka.model.GameLogic
 import com.tsu.hitselka.shop.ShopActivity
 import java.util.*
 

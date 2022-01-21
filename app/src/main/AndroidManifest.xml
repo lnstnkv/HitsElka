@@ -42,11 +42,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".record_book.RecordBookActivity"
+            android:name=".activity_record_book.RecordBookActivity"
             android:exported="true"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".GameActivity"
+            android:name=".activity_game.GameActivity"
             android:exported="true"
             android:screenOrientation="landscape" />
     </application>

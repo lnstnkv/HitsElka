@@ -19,7 +19,7 @@ class ImprovementAdapter(
 
     private companion object {
         val DIFF = object : DiffUtil.ItemCallback<Object>() {
-            override fun areItemsTheSame(oldItem: Object, newItem: Object) = oldItem == newItem
+            override fun areItemsTheSame(oldItem: Object, newItem: Object) = oldItem.type == newItem.type && oldItem.level == newItem.level
             override fun areContentsTheSame(oldItem: Object, newItem: Object) = oldItem == newItem
         }
     }
@@ -39,7 +39,7 @@ class ImprovementAdapter(
 
         init {
             binding.button.setOnClickListener {
-                listener.onItemClick(getItem(layoutPosition))
+                listener.onItemClick(getItem(absoluteAdapterPosition))
             }
         }
 
