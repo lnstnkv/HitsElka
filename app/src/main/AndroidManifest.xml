@@ -13,15 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HitsElka">
         <activity
+            android:name=".inventory.InventoryActivity"
+            android:exported="true" />
+        <activity
             android:name=".shop.ShopActivity"
             android:exported="true"
-            android:screenOrientation="landscape">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:screenOrientation="landscape"></activity>
         <activity
             android:name=".activity_enhancement.EnhancementActivity"
             android:exported="false"
@@ -41,12 +38,17 @@
         <activity
             android:name=".record_book.RecordBookActivity"
             android:exported="true"
-            android:screenOrientation="landscape">
-        </activity>
+            android:screenOrientation="landscape"></activity>
         <activity
             android:name=".GameActivity"
             android:exported="true"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

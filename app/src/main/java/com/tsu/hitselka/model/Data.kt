@@ -64,3 +64,7 @@ data class ItemShop(
     val image:Int,
     val cost:Int
 )
+data class Inventory(
+    val image:Int,
+    val count:Int
+)

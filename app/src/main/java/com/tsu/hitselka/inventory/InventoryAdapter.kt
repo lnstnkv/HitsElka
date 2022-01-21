@@ -1,4 +1,4 @@
-package com.tsu.hitselka.shop
+package com.tsu.hitselka.inventory
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,28 +8,27 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.tsu.hitselka.R
-import com.tsu.hitselka.databinding.ItemImprovementBinding
 import com.tsu.hitselka.databinding.ItemShopBinding
+import com.tsu.hitselka.model.Inventory
 import com.tsu.hitselka.model.ItemShop
-import com.tsu.hitselka.model.Object
-import com.tsu.hitselka.record_book.ImprovementAdapter
+import com.tsu.hitselka.shop.ShopAdapter
 
-class ShopAdapter (
+class InventoryAdapter (
     private val context: Context,
-    private val listener: ShopAdapterListener
-) : ListAdapter<ItemShop, ShopAdapter.ViewHolder>(DIFF) {
+    private val listener: InventoryAdapterListener
+) : ListAdapter<Inventory, InventoryAdapter.ViewHolder>(DIFF) {
 
     private companion object {
-        val DIFF = object : DiffUtil.ItemCallback<ItemShop>() {
-            override fun areItemsTheSame(oldItem: ItemShop, newItem: ItemShop) = oldItem == newItem
+        val DIFF = object : DiffUtil.ItemCallback<Inventory>() {
+            override fun areItemsTheSame(oldItem: Inventory, newItem: Inventory) = oldItem == newItem
 
-            override fun areContentsTheSame(oldItem: ItemShop, newItem: ItemShop) = oldItem == newItem
+            override fun areContentsTheSame(oldItem: Inventory, newItem: Inventory) = oldItem == newItem
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_shop, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_inventory, parent, false)
         )
     }
 
@@ -46,14 +45,12 @@ class ShopAdapter (
             }
         }
 
-        fun bind(shopItem: ItemShop) = with(binding) {
-            objectImageView.setImageResource(shopItem.image)
-            button.text = shopItem.cost.toString()
-            titleTextView.text = shopItem.name
+        fun bind(inventory: Inventory) = with(binding) {
+
         }
     }
 
-    interface ShopAdapterListener {
-        fun onItemClick(item: ItemShop)
+    interface InventoryAdapterListener {
+        fun onItemClick(item: Inventory)
     }
 }

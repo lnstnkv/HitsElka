@@ -39,7 +39,7 @@ class ImprovementAdapter(
 
         init {
             binding.root.setOnClickListener {
-                listener.onItemClick(getItem(adapterPosition))
+                listener.onItemClick(getItem(bindingAdapterPosition))
             }
         }
 

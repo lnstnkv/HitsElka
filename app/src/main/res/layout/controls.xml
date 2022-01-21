@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal">
@@ -76,9 +77,9 @@
         android:id="@+id/shopImageView"
         android:layout_width="56dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
         android:adjustViewBounds="true"
         android:src="@drawable/shop"
-        app:layout_constraintBottom_toTopOf="@id/playImageView"
         app:layout_constraintEnd_toEndOf="@id/settingsImageView"
         app:layout_constraintTop_toBottomOf="@id/settingsImageView" />
 
@@ -93,6 +94,17 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <!--    Level -->
+
+    <ImageView
+        android:id="@+id/inventoryImageView"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="16dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/inventory"
+        app:layout_constraintEnd_toEndOf="@+id/shopImageView"
+        app:layout_constraintStart_toStartOf="@+id/shopImageView"
+        app:layout_constraintTop_toBottomOf="@+id/shopImageView" />
 
     <View
         android:id="@+id/levelBgView"
