@@ -8,7 +8,8 @@ data class PlayerInfo(
     val resources: Resources = Resources(),
     val firstYearStats: FirstYearStats = FirstYearStats(),
     val firstYearInventory: List<Toy> = listOf(),
-    val settings: Settings = Settings()
+    val settings: Settings = Settings(),
+    val gifts: Gifts = Gifts(),
 )
 
 data class Stats(
@@ -25,16 +26,17 @@ data class Resources(
 )
 
 data class FirstYearStats(
-    val secondBuildingLevel: Int = 1,
-    val secondBuildingWandsUsed: Int = 0,
-    val hedgehogLevel: Int = 1,
-    val hedgehogWandsUsed: Int = 0,
-    val fatherFrostLevel: Int = 1,
-    val fatherFrostWandsUsed: Int = 0,
-    val maidenLevel: Int = 1,
-    val maidenWandsUsed: Int = 0,
-    val forestLevel: Int = 1,
-    val forestWandsUsed: Int = 0
+    val father_frost: BuildingStats = BuildingStats(wandsNeeded = 2500L),
+    val forest: BuildingStats = BuildingStats(wandsNeeded = 1300L),
+    val hedgehog: BuildingStats = BuildingStats(wandsNeeded = 1600L),
+    val maiden: BuildingStats = BuildingStats(wandsNeeded = 2000L),
+    val university: BuildingStats = BuildingStats(wandsNeeded = 1000L),
+)
+
+data class BuildingStats(
+    val level: Long = 1,
+    val wands: Long = 0,
+    val wandsNeeded: Long
 )
 
 data class Toy(
@@ -49,11 +51,17 @@ data class Settings(
     val sound: Boolean = true,
 )
 
+data class Gifts(
+    val bright: Gift = Gift("bright"),
+    val special: Gift = Gift("special"),
+    val fairytale: Gift = Gift("gifts"),
+)
+
 data class Gift(
     val type: String,
-    val level: Int,
-    val giftsOpened: Int,
-    val gifts: Int,
+    val level: Int = 1,
+    val giftsOpened: Int = 0,
+    val gifts: Int = 0,
 )
 
 @Parcelize
