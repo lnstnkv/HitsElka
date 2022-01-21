@@ -38,14 +38,14 @@ class ShopActivity : AppCompatActivity() {
         binding.recyclerView.addItemDecoration(ImprovementItemDecoration())
 
         val shopItems = mutableListOf<ItemShop>()
-        shopItems.add(ItemShop("Cup", R.drawable.hedgehog, 200))
-        shopItems.add(ItemShop("Book", R.drawable.winter_maiden, 250))
-        shopItems.add(ItemShop("Father Frost", R.drawable.father_frost, 340))
-        shopItems.add(ItemShop("University", R.drawable.university, 410))
-        shopItems.add(ItemShop("Hedgehog", R.drawable.hedgehog, 500))
-        shopItems.add(ItemShop("Winter Maiden", R.drawable.winter_maiden,650))
-        shopItems.add(ItemShop("Father Frost", R.drawable.father_frost, 700))
-        shopItems.add(ItemShop("University", R.drawable.university, 1000))
+        shopItems.add(ItemShop("Cup", R.drawable.toy_cup, 200))
+        shopItems.add(ItemShop("Sleep Potion", R.drawable.toy_cauldron, 250))
+        shopItems.add(ItemShop("C++ Manual", R.drawable.toy_book, 340))
+        shopItems.add(ItemShop("Wild Rose", R.drawable.toy_flower, 410))
+        shopItems.add(ItemShop("Narcissus", R.drawable.toy_flower2, 500))
+        shopItems.add(ItemShop("Chrysanthemum", R.drawable.toy_chrysanthemum,650))
+        shopItems.add(ItemShop("Pot of Gold", R.drawable.toy_money, 700))
+        shopItems.add(ItemShop("Luck Potion", R.drawable.toy_luck_potion, 1000))
         adapter.submitList(shopItems)
     }
 

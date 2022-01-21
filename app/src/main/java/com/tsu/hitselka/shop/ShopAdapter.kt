@@ -47,7 +47,9 @@ class ShopAdapter (
         }
 
         fun bind(shopItem: ItemShop) = with(binding) {
-
+            objectImageView.setImageResource(shopItem.image)
+            button.text = shopItem.cost.toString()
+            titleTextView.text = shopItem.name
         }
     }
 
