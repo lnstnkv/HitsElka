@@ -1,5 +1,6 @@
 package com.tsu.hitselka.activity_enhancement
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -40,12 +41,13 @@ class EnhancementViewModel : ViewModel() {
     fun initViewModel(item: Object) {
         this.item = item
 
+        Log.d("MyTag", item.toString())
+
         wandsTotal = item.wandsNeeded
-        wandsSpent = item.wandsSpent
-        wandsNeeded = wandsTotal - wandsSpent
+        wandsNeeded = wandsTotal - (wandsSpent + item.wandsSpent)
 
         _wandsRemain.value = wandsNeeded
-        _objectProgress.value = wandsSpent * 100 / wandsTotal
+        _objectProgress.value = (wandsSpent + item.wandsSpent) * 100 / wandsTotal
     }
 
     fun startSpending() {
@@ -59,8 +61,8 @@ class EnhancementViewModel : ViewModel() {
     }
 
     fun stopSpending() {
-        job?.cancel()
         wandSpending = false
+        job?.cancel()
     }
 
     fun setAvailableWands(wands: Long) {
@@ -95,27 +97,27 @@ class EnhancementViewModel : ViewModel() {
         wandsAvailable--
 
         _wandsRemain.value = wandsNeeded
-        _objectProgress.value = wandsSpent * 100 / wandsTotal
-        _levelProgress.value = (wandsSpentForLevel + levelWandsSpent) * 100 / levelNeeded
+        _objectProgress.value = (item.wandsSpent + wandsSpent) * 100 / wandsTotal
+        _levelProgress.value = (wandsSpentForLevel + stats.currentLevelWandsUsed) * 100 / levelNeeded
         _wands.value = wandsAvailable
 
-        if (_wandsRemain.value == 0L) {
+        if (wandsNeeded == 0L) {
             GameLogic.upgrade(item)
             return
         }
 
-        if (wandsAvailable == 0L) {
-            // сохраняем трату палочек
+        if (wandsSpentForLevel + stats.currentLevelWandsUsed == levelNeeded) {
+            GameLogic.newLevel()
             return
         }
 
-        if (wandsSpentForLevel + levelWandsSpent == levelNeeded) {
-            GameLogic.newLevel()
+        if (wandsAvailable == 0L) {
+            stopSpending()
             return
         }
     }
 
     fun sendWands() {
-
+        GameLogic.sendWands(item, wandsSpent, wandsSpentForLevel)
     }
 }

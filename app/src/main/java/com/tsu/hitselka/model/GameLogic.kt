@@ -15,6 +15,7 @@ object GameLogic {
     private val buildings = database.child("buildings")
     private val player = database.child("players").child(uid)
     private val playerBuildings = player.child("firstYearStats")
+    private val playerResources = player.child("resources")
     private val playerStats = player.child("stats")
 
     private val objects = listOf("university", "forest", "hedgehog", "maiden", "father_frost")
@@ -102,8 +103,14 @@ object GameLogic {
             }
     }
 
-    fun sendWands(wands: Long) {
+    fun sendWands(item: Object, wands: Long, wandsForLevel: Long) {
+        val stats = GameData.getStats() ?: return
+        val resources = GameData.getResources() ?: return
 
+        playerBuildings.child(item.type).child("wands").setValue(item.wandsSpent + wands)
+        playerResources.child("wands").setValue(resources.wands - wands)
+        playerStats.child("wandsUsed").setValue(stats.wandsUsed + wands)
+        playerStats.child("currentLevelWandsUsed").setValue(stats.currentLevelWandsUsed + wandsForLevel)
     }
 
     fun newLevel() {

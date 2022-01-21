@@ -17,6 +17,17 @@ class EnhancementActivity : AppCompatActivity(R.layout.activity_enhancement) {
     private val binding by lazy { ActivityEnhancementBinding.inflate(layoutInflater) }
     private val viewModel by viewModels<EnhancementViewModel>()
 
+    private val listener = object : View.OnTouchListener {
+        override fun onTouch(view: View?, event: MotionEvent?): Boolean {
+            if (event?.action == MotionEvent.ACTION_DOWN) {
+                viewModel.startSpending()
+            } else if (event?.action == MotionEvent.ACTION_UP) {
+                viewModel.stopSpending()
+            }
+            return true
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -40,18 +51,6 @@ class EnhancementActivity : AppCompatActivity(R.layout.activity_enhancement) {
         binding.closeButton.setOnClickListener {
             finish()
         }
-
-        val listener = object : View.OnTouchListener {
-            override fun onTouch(view: View?, event: MotionEvent?): Boolean {
-                if (event?.action == MotionEvent.ACTION_DOWN) {
-                    viewModel.startSpending()
-                } else if (event?.action == MotionEvent.ACTION_UP) {
-                    viewModel.stopSpending()
-                }
-                return true
-            }
-        }
-        binding.wandButton.setOnTouchListener(listener)
     }
 
     private fun initListeners() {
@@ -88,7 +87,10 @@ class EnhancementActivity : AppCompatActivity(R.layout.activity_enhancement) {
             binding.wandTextView.text = wands.toString()
 
             if (wands == 0L) {
-                binding.wandButton.isClickable = false
+                //binding.wandButton.isClickable = false
+                binding.wandButton.setOnTouchListener(null)
+            } else {
+                binding.wandButton.setOnTouchListener(listener)
             }
         }
     }
@@ -103,4 +105,8 @@ class EnhancementActivity : AppCompatActivity(R.layout.activity_enhancement) {
         return maxWidth * percentage.toInt() / 100
     }
 
+    override fun onDestroy() {
+        viewModel.sendWands()
+        super.onDestroy()
+    }
 }

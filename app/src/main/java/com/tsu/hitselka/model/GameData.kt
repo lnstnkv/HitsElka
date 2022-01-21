@@ -55,4 +55,8 @@ object GameData {
     fun getStats(): Stats? {
         return _stats.value
     }
+
+    fun getResources(): Resources? {
+        return _resources.value
+    }
 }
