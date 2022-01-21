@@ -52,16 +52,16 @@ data class Settings(
 )
 
 data class Gifts(
-    val bright: Gift = Gift("bright"),
-    val special: Gift = Gift("special"),
-    val fairytale: Gift = Gift("gifts"),
+    val bright: Gift = Gift(type = "bright"),
+    val special: Gift = Gift(type = "special"),
+    val fairytale: Gift = Gift(type= "gifts"),
 )
 
 data class Gift(
-    val type: String,
+    val type: String = "bright",
     val level: Int = 1,
     val giftsOpened: Int = 0,
-    val gifts: Int = 0,
+    val gifts: Int = 1,
 )
 
 @Parcelize
@@ -76,3 +76,14 @@ data class Object(
     val built: Boolean,
     val locked: Boolean
 ) : Parcelable
+
+data class ItemShop(
+    val name:String,
+    val image:Int,
+    val cost:Int
+)
+
+data class Inventory(
+    val image:Int,
+    val count:Int
+)

@@ -18,6 +18,7 @@ object GameData {
     private val player = database.child("players").child(uid)
     private val playerStats = player.child("stats")
     private val playerResources = player.child("resources")
+    private val playerGifts = player.child("gifts")
 
     private val _stats = MutableLiveData<Stats>()
     val stats: LiveData<Stats> get() = _stats
@@ -25,9 +26,13 @@ object GameData {
     private val _resources = MutableLiveData<Resources>()
     val resources: LiveData<Resources> get() = _resources
 
+    private val _gifts = MutableLiveData<Gifts>()
+    val gifts: LiveData<Gifts> get() = _gifts
+
     fun init() {
         playerStats.addValueEventListener(statsListener)
         playerResources.addValueEventListener(resourcesListener)
+        playerGifts.addValueEventListener(giftsListener)
     }
 
     private val statsListener = object : ValueEventListener {
@@ -49,6 +54,17 @@ object GameData {
 
         override fun onCancelled(error: DatabaseError) {
             TODO("Not yet implemented")
+        }
+    }
+
+    private val giftsListener = object : ValueEventListener {
+        override fun onDataChange(snapshot: DataSnapshot) {
+            val gifts = snapshot.getValue<Gifts>()
+            _gifts.value = gifts ?: return
+        }
+
+        override fun onCancelled(error: DatabaseError) {
+
         }
     }
 

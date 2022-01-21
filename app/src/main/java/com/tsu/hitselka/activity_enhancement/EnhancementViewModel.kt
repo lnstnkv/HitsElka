@@ -91,6 +91,22 @@ class EnhancementViewModel : ViewModel() {
     }
 
     private fun spendWand() {
+        if (wandsNeeded == 0L) {
+            GameLogic.upgrade(item)
+            stopSpending()
+            return
+        }
+
+        if (wandsSpentForLevel + stats.currentLevelWandsUsed == levelNeeded) {
+            GameLogic.newLevel()
+            return
+        }
+
+        if (wandsAvailable <= 0L) {
+            stopSpending()
+            return
+        }
+
         wandsSpent++
         wandsSpentForLevel++
         wandsNeeded--
@@ -100,21 +116,6 @@ class EnhancementViewModel : ViewModel() {
         _objectProgress.value = (item.wandsSpent + wandsSpent) * 100 / wandsTotal
         _levelProgress.value = (wandsSpentForLevel + stats.currentLevelWandsUsed) * 100 / levelNeeded
         _wands.value = wandsAvailable
-
-        if (wandsNeeded == 0L) {
-            GameLogic.upgrade(item)
-            return
-        }
-
-        if (wandsSpentForLevel + stats.currentLevelWandsUsed == levelNeeded) {
-            GameLogic.newLevel()
-            return
-        }
-
-        if (wandsAvailable == 0L) {
-            stopSpending()
-            return
-        }
     }
 
     fun sendWands() {

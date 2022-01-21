@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.tsu.hitselka.R
 import com.tsu.hitselka.activity_gifts.model.GiftsRecycler
 import com.tsu.hitselka.databinding.ActivityGiftsBinding
+import com.tsu.hitselka.model.GameData
 import com.tsu.hitselka.model.Gift
 import com.tsu.hitselka.model.setFullscreen
 
@@ -25,6 +26,7 @@ class GiftsActivity : AppCompatActivity(R.layout.activity_gifts) {
         setContentView(binding.root)
 
         initListeners()
+        initObservers()
         initRecyclerView()
         setFullscreen()
     }
@@ -35,15 +37,18 @@ class GiftsActivity : AppCompatActivity(R.layout.activity_gifts) {
         }
     }
 
+    private fun initObservers() {
+        val gifts = mutableListOf<Gift>()
+        GameData.gifts.observe(this) {
+            gifts.add(it.bright)
+            gifts.add(it.special)
+            gifts.add(it.fairytale)
+            adapter.submitList(gifts)
+        }
+    }
+
     private fun initRecyclerView() {
         binding.recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         binding.recyclerView.adapter = adapter
-
-        val gifts = mutableListOf<Gift>()
-        gifts.add(Gift("bright", 10, 35, 43))
-        gifts.add(Gift("special", 4, 0, 5))
-        gifts.add(Gift("fairytale", 1, 8, 3))
-
-        adapter.submitList(gifts)
     }
 }
