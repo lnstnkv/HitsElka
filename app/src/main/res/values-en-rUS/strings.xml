@@ -26,4 +26,6 @@
     <string name="stage_list">Stage %1$d</string>
     <string name="upgraded">Upgraded!</string>
     <string name="locked">Upgrade stage %1$d</string>
+    <string name="shop">Shop</string>
+    <string name="cup">Cup</string>
 </resources>

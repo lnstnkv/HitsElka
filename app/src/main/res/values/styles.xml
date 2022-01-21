@@ -53,4 +53,8 @@
         <item name="android:textSize">12sp</item>
         <item name="android:fontFamily">@font/koni_black</item>
     </style>
+
+    <style name="ActionButton.Green">
+        <item name="android:background">@drawable/action_btn_green</item>
+    </style>
 </resources>

@@ -13,6 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HitsElka">
         <activity
+            android:name=".inventory.InventoryActivity"
+            android:exported="true" />
+        <activity
+            android:name=".shop.ShopActivity"
+            android:exported="true"
+            android:screenOrientation="landscape"></activity>
+        <activity
             android:name=".activity_enhancement.EnhancementActivity"
             android:exported="false"
             android:screenOrientation="landscape" />

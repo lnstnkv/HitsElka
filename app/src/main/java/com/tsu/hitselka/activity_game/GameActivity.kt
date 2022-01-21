@@ -17,11 +17,13 @@ import com.tsu.hitselka.SurfaceView
 import com.tsu.hitselka.activity_gifts.GiftsActivity
 import com.tsu.hitselka.databinding.ActivityGameBinding
 import com.tsu.hitselka.databinding.ControlsBinding
+import com.tsu.hitselka.inventory.InventoryActivity
 import com.tsu.hitselka.model.SharedPrefs
 import com.tsu.hitselka.model.setFullscreen
 import com.tsu.hitselka.activity_record_book.RecordBookActivity
 import com.tsu.hitselka.model.GameData
 import com.tsu.hitselka.model.GameLogic
+import com.tsu.hitselka.shop.ShopActivity
 import java.util.*
 
 class GameActivity : AppCompatActivity(R.layout.controls) {
@@ -87,13 +89,20 @@ class GameActivity : AppCompatActivity(R.layout.controls) {
         }
 
         controls.shopImageView.setOnClickListener {
-            Toast.makeText(this, "Shop", Toast.LENGTH_SHORT).show()
             playClickSound()
+            val intent = Intent(this, ShopActivity::class.java)
+            startActivity(intent)
+
         }
 
         controls.playImageView.setOnClickListener {
             Toast.makeText(this, "Play", Toast.LENGTH_SHORT).show()
             playClickSound()
+        }
+        controls.inventoryImageView.setOnClickListener {
+            playClickSound()
+            val intent=Intent(this,InventoryActivity::class.java)
+            startActivity(intent)
         }
     }
 

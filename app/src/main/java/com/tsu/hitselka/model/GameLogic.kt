@@ -1,7 +1,11 @@
 package com.tsu.hitselka.model
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.tsu.hitselka.R
@@ -77,6 +81,7 @@ object GameLogic {
                     }
 
                     if (building == "father_frost") {
+                        Log.d("MyTag", buildings.toString())
                         _buildings.value = buildings.sortedBy { it.level }
                     }
                 }
@@ -107,10 +112,14 @@ object GameLogic {
         val stats = GameData.getStats() ?: return
         val resources = GameData.getResources() ?: return
 
-        playerBuildings.child(item.type).child("wands").setValue(item.wandsSpent + wands)
+        if (item.wandsSpent + wands != item.wandsNeeded) {
+            playerBuildings.child(item.type).child("wands").setValue(item.wandsSpent + wands)
+        }
+
         playerResources.child("wands").setValue(resources.wands - wands)
         playerStats.child("wandsUsed").setValue(stats.wandsUsed + wands)
-        playerStats.child("currentLevelWandsUsed").setValue(stats.currentLevelWandsUsed + wandsForLevel)
+        playerStats.child("currentLevelWandsUsed")
+            .setValue(stats.currentLevelWandsUsed + wandsForLevel)
     }
 
     fun newLevel() {
@@ -131,8 +140,8 @@ object GameLogic {
 
         val stage = "stage" + item.level.toString()
         buildings.child(item.type).child(stage).get().addOnSuccessListener {
-            playerBuildings.child(item.type).child("level").setValue(item.level)
-            playerBuildings.child(item.type).child("wandsNeeded").setValue(it.value)
+            val newStats = BuildingStats(item.level, 0L, it.value as Long)
+            playerBuildings.child(item.type).setValue(newStats)
         }
     }
 }
