@@ -12,15 +12,16 @@ data class PlayerInfo(
 )
 
 data class Stats(
-    val currentLevel: Int = 1,
-    val currentLevelWandsUsed: Int = 0,
-    val wandsUsed: Int = 0,
+    val currentLevel: Long = 1,
+    val currentLevelWandsUsed: Long = 0,
+    val objectsBuilt: Long = 0,
+    val wandsUsed: Long = 0,
 )
 
 data class Resources(
-    val wands: Int = 500,
-    val rubies: Int = 50,
-    val moneys: Int = 50,
+    val wands: Long = 500,
+    val rubies: Long = 50,
+    val moneys: Long = 50,
 )
 
 data class FirstYearStats(
@@ -57,12 +58,13 @@ data class Gift(
 
 @Parcelize
 data class Object(
+    val type: String,
     val name: Int,
     val image: Int,
-    val level: Int,
-    val maxLevel: Int,
-    val wandsSpent: Int,
-    val wandsNeeded: Int,
+    val level: Long,
+    val maxLevel: Long,
+    val wandsSpent: Long,
+    val wandsNeeded: Long,
     val built: Boolean,
     val locked: Boolean
 ) : Parcelable

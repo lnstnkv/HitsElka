@@ -1,4 +1,4 @@
-package com.tsu.hitselka
+package com.tsu.hitselka.activity_game
 
 import android.content.Intent
 import android.media.MediaPlayer
@@ -11,12 +11,17 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.Target
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.tsu.hitselka.R
+import com.tsu.hitselka.SettingsActivity
+import com.tsu.hitselka.SurfaceView
 import com.tsu.hitselka.activity_gifts.GiftsActivity
 import com.tsu.hitselka.databinding.ActivityGameBinding
 import com.tsu.hitselka.databinding.ControlsBinding
 import com.tsu.hitselka.model.SharedPrefs
 import com.tsu.hitselka.model.setFullscreen
 import com.tsu.hitselka.activity_record_book.RecordBookActivity
+import com.tsu.hitselka.model.GameData
+import com.tsu.hitselka.model.GameLogic
 import java.util.*
 
 class GameActivity : AppCompatActivity(R.layout.controls) {
@@ -32,6 +37,8 @@ class GameActivity : AppCompatActivity(R.layout.controls) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        GameLogic.init()
 
         surface = SurfaceView(this)
         setContentView(surface)
@@ -91,16 +98,6 @@ class GameActivity : AppCompatActivity(R.layout.controls) {
     }
 
     private fun initObservers() {
-        viewModel.resources.observe(this) { resources ->
-            controls.wandTextView.text = resources.wands.toString()
-            controls.moneyTextView.text = resources.moneys.toString()
-            controls.rubyTextView.text = resources.rubies.toString()
-        }
-
-        viewModel.stats.observe(this) { stats ->
-            controls.levelTextView.text = stats.currentLevel.toString()
-        }
-
         viewModel.isRussian.observe(this) { state ->
             val locale = if (state) Locale("ru", "RU") else Locale.ENGLISH
             Locale.setDefault(locale)
@@ -120,6 +117,16 @@ class GameActivity : AppCompatActivity(R.layout.controls) {
 
         viewModel.isSoundOn.observe(this) { state ->
             isSoundOn = state
+        }
+
+        GameData.stats.observe(this) { stats ->
+            controls.levelTextView.text = stats.currentLevel.toString()
+        }
+
+        GameData.resources.observe(this) { resources ->
+            controls.wandTextView.text = resources.wands.toString()
+            controls.moneyTextView.text = resources.moneys.toString()
+            controls.rubyTextView.text = resources.rubies.toString()
         }
     }
 

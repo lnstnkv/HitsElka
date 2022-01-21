@@ -82,8 +82,8 @@ class ImprovementAdapter(
 
     private fun getPercentage(item: Object) = item.wandsSpent * 100 / item.wandsNeeded
 
-    private fun getWidth(percentage: Int): Int {
+    private fun getWidth(percentage: Long): Int {
         val maxWidth = context.resources.getDimensionPixelSize(R.dimen.object_progress_width)
-        return maxWidth * percentage / 100
+        return maxWidth * percentage.toInt() / 100
     }
 }

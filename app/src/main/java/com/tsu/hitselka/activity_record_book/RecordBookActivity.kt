@@ -48,9 +48,8 @@ class RecordBookActivity : AppCompatActivity() {
             binding.progressTextView.text = resources.getString(R.string.midterms_progress, percentage)
 
             val width = getProgressBarWidth(percentage)
-            if (width == 0) {
-                binding.progressView.visibility = View.INVISIBLE
-            } else {
+            if (width > 0) {
+                binding.progressView.visibility = View.VISIBLE
                 binding.progressView.layoutParams.width = width
             }
         }

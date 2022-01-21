@@ -1,6 +1,5 @@
 package com.tsu.hitselka.model
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
@@ -11,9 +10,19 @@ import java.util.*
 object GameLogic {
     private val db =
         Firebase.database("https://hitselka-default-rtdb.asia-southeast1.firebasedatabase.app")
+    private val uid = SharedPrefs.getUID()
     private val database: DatabaseReference = db.reference
+    private val buildings = database.child("buildings")
+    private val player = database.child("players").child(uid)
+    private val playerBuildings = player.child("firstYearStats")
+    private val playerStats = player.child("stats")
+
     private val objects = listOf("university", "forest", "hedgehog", "maiden", "father_frost")
     private const val OBJECTS_COUNT = 35
+
+    fun init() {
+        GameData.init()
+    }
 
     fun firstRun(uid: String): PlayerInfo {
         val playerInfo = PlayerInfo()
@@ -40,21 +49,23 @@ object GameLogic {
             }
 
             val buildingInfo = database.child("buildings").child(building)
-            val buildingPlayerInfo = database.child("players").child(uid).child("firstYearStats").child(building)
+            val buildingPlayerInfo =
+                database.child("players").child(uid).child("firstYearStats").child(building)
 
             buildingInfo.child("maxStage").get().addOnSuccessListener { maxStageSnapshot ->
-                val maxStage = (maxStageSnapshot.value as Long).toInt()
+                val maxStage = maxStageSnapshot.value as Long
 
                 buildingPlayerInfo.get().addOnSuccessListener {
-                    val level = ((it.value as HashMap<*, *>)["level"] as Long).toInt()
-                    val wands = ((it.value as HashMap<*, *>)["wands"] as Long).toInt()
-                    val wandsNeeded = ((it.value as HashMap<*, *>)["wandsNeeded"] as Long).toInt()
+                    val level = (it.value as HashMap<*, *>)["level"] as Long
+                    val wands = (it.value as HashMap<*, *>)["wands"] as Long
+                    val wandsNeeded = (it.value as HashMap<*, *>)["wandsNeeded"] as Long
 
                     for (i in 1 until maxStage) {
                         val newBuilding = Object(
+                            building,
                             getName(building),
                             image,
-                            i + 1,
+                            i + 1L,
                             maxStage,
                             wands,
                             wandsNeeded,
@@ -65,7 +76,6 @@ object GameLogic {
                     }
 
                     if (building == "father_frost") {
-                        Log.d("MyTag", buildings.toString())
                         _buildings.value = buildings.sortedBy { it.level }
                     }
                 }
@@ -90,5 +100,32 @@ object GameLogic {
                 val objectsBuilt = (it.value as Long).toInt()
                 _progress.value = objectsBuilt * 100 / OBJECTS_COUNT
             }
+    }
+
+    fun sendWands(wands: Long) {
+
+    }
+
+    fun newLevel() {
+        val oldStats = GameData.getStats() ?: return
+        playerStats.setValue(
+            Stats(
+                oldStats.currentLevel + 1,
+                0,
+                oldStats.objectsBuilt,
+                oldStats.wandsUsed,
+            )
+        )
+    }
+
+    fun upgrade(item: Object) {
+        val stats = GameData.getStats() ?: return
+        playerStats.child("objectsBuilt").setValue(stats.objectsBuilt + 1)
+
+        val stage = "stage" + item.level.toString()
+        buildings.child(item.type).child(stage).get().addOnSuccessListener {
+            playerBuildings.child(item.type).child("level").setValue(item.level)
+            playerBuildings.child(item.type).child("wandsNeeded").setValue(it.value)
+        }
     }
 }

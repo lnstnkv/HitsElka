@@ -1,4 +1,4 @@
-package com.tsu.hitselka
+package com.tsu.hitselka.activity_game
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -17,12 +17,6 @@ class GameViewModel : ViewModel() {
     private val db =
         Firebase.database("https://hitselka-default-rtdb.asia-southeast1.firebasedatabase.app")
     private val database: DatabaseReference = db.reference
-
-    private val _resources = MutableLiveData<Resources>()
-    val resources: LiveData<Resources> get() = _resources
-
-    private val _stats = MutableLiveData<Stats>()
-    val stats: LiveData<Stats> get() = _stats
 
     private val _isRussian = MutableLiveData<Boolean>()
     val isRussian: LiveData<Boolean> get() = _isRussian
@@ -45,12 +39,6 @@ class GameViewModel : ViewModel() {
                 if (data.value == null) {
                     GameLogic.firstRun(uid)
                 } else {
-                    val resources = data.child("resources").getValue<Resources>()
-                    _resources.value = resources ?: return
-
-                    val stats = data.child("stats").getValue<Stats>()
-                    _stats.value = stats ?: return
-
                     val settings = data.child("settings").getValue<Settings>()
                     _isRussian.value = settings?.lang ?: return
                     _isMusicOn.value = settings.music
