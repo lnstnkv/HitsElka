@@ -76,3 +76,14 @@ data class Object(
     val built: Boolean,
     val locked: Boolean
 ) : Parcelable
+
+data class ItemShop(
+    val name:String,
+    val image:Int,
+    val cost:Int
+)
+
+data class Inventory(
+    val image:Int,
+    val count:Int
+)
