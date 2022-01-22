@@ -1,55 +1,66 @@
 package com.tsu.hitselka.inventory
 
-import android.content.Context
+
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.tsu.hitselka.R
-import com.tsu.hitselka.databinding.ItemShopBinding
 import com.tsu.hitselka.model.Inventory
-import com.tsu.hitselka.model.ItemShop
-import com.tsu.hitselka.shop.ShopAdapter
+import androidx.recyclerview.widget.AsyncListDiffer
+import com.tsu.hitselka.databinding.ItemInventoryBinding
 
-class InventoryAdapter (
-    private val context: Context,
-    private val listener: InventoryAdapterListener
-) : ListAdapter<Inventory, InventoryAdapter.ViewHolder>(DIFF) {
 
-    private companion object {
-        val DIFF = object : DiffUtil.ItemCallback<Inventory>() {
-            override fun areItemsTheSame(oldItem: Inventory, newItem: Inventory) = oldItem == newItem
+class InventoryAdapter: RecyclerView.Adapter<InventoryAdapter.ItemViewHolder>() {
 
-            override fun areContentsTheSame(oldItem: Inventory, newItem: Inventory) = oldItem == newItem
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = ItemInventoryBinding.inflate(inflater, parent, false)
+        return ItemViewHolder(binding)
+    }
+
+    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+        val movieItem= differ.currentList[position]
+        holder.bindView(movieItem)
+    }
+
+    override fun getItemCount(): Int {
+        return differ.currentList.size
+    }
+
+    private val differCallback = object: DiffUtil.ItemCallback<Inventory>() {
+        override fun areItemsTheSame(oldItem: Inventory, newItem: Inventory): Boolean {
+            return oldItem == newItem
         }
+
+        override fun areContentsTheSame(oldItem: Inventory, newItem: Inventory): Boolean {
+            return oldItem == newItem
+        }
+
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_inventory, parent, false)
-        )
+    val differ = AsyncListDiffer(this, differCallback)
+
+    fun moveItem(fromPosition: Int, toPosition: Int) {
+        val list = differ.currentList.toMutableList()
+        val fromItem = list[fromPosition]
+        list.removeAt(fromPosition)
+        if (toPosition < fromPosition) {
+            list.add(toPosition + 1 , fromItem)
+        } else {
+            list.add(toPosition - 1, fromItem)
+        }
+        differ.submitList(list)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
-    }
+    inner class ItemViewHolder(val binding: ItemInventoryBinding) : RecyclerView.ViewHolder(binding.root) {
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val binding = ItemShopBinding.bind(view)
-
-        init {
-            binding.root.setOnClickListener {
-                listener.onItemClick(getItem(bindingAdapterPosition))
+        fun bindView(item: Inventory) {
+            binding.apply {
+                imageViewInventory.setImageResource(item.image)
+                textViewCount.text = item.count.toString()
             }
         }
-
-        fun bind(inventory: Inventory) = with(binding) {
-
-        }
     }
-
     interface InventoryAdapterListener {
         fun onItemClick(item: Inventory)
     }
