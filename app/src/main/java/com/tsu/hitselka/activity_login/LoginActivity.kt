@@ -86,7 +86,7 @@ class LoginActivity : AppCompatActivity(R.layout.activity_login) {
 
     private fun checkLoginState() {
         if (auth.currentUser != null) {
-            val intent = Intent(this, GameActivity::class.java)
+            val intent = Intent(this, VideoActivity::class.java)
             startActivity(intent)
         } else {
             binding.signInButton.visibility = View.VISIBLE
