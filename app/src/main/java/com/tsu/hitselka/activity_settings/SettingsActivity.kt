@@ -1,4 +1,4 @@
-package com.tsu.hitselka
+package com.tsu.hitselka.activity_settings
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,6 +11,8 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import com.tsu.hitselka.R
+import com.tsu.hitselka.activity_login.LoginActivity
 import com.tsu.hitselka.databinding.ActivitySettingsBinding
 import com.tsu.hitselka.model.*
 import java.util.*

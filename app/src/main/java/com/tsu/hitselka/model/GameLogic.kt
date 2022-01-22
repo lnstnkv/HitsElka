@@ -167,11 +167,21 @@ object GameLogic {
 
         if ((gift.giftsOpened + count == 100 && gift.type == "bright") ||
             (gift.giftsOpened + count == 10 && gift.type == "special") ||
-            (gift.giftsOpened + count == 2 && gift.type == "fairytale")) {
+            (gift.giftsOpened + count == 2 && gift.type == "fairytale")
+        ) {
             playerGifts.child(gift.type).child("giftsOpened").setValue(0)
             playerGifts.child(gift.type).child("level").setValue(gift.level + 1)
         } else {
             playerGifts.child(gift.type).child("giftsOpened").setValue(gift.giftsOpened + count)
         }
+    }
+
+    fun chestOpened(reward: List<Inventory>) {
+        val resources = GameData.getResources() ?: return
+
+        playerResources.child("wands").setValue(resources.wands + reward[0].count)
+        playerResources.child("moneys").setValue(resources.moneys + reward[1].count)
+        playerResources.child("rubies").setValue(resources.rubies + reward[2].count)
+        playerStats.child("chestLastOpened").setValue(System.currentTimeMillis())
     }
 }

@@ -1,4 +1,4 @@
-package com.tsu.hitselka.activity_gift
+package com.tsu.hitselka.activity_chest
 
 import android.os.Bundle
 import android.view.View
@@ -7,39 +7,28 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tsu.hitselka.R
 import com.tsu.hitselka.activity_gift.model.RewardAdapter
+import com.tsu.hitselka.databinding.ActivityChestBinding
 import com.tsu.hitselka.databinding.ActivityGiftBinding
+import com.tsu.hitselka.model.GameData
 import com.tsu.hitselka.model.GiftInfo
 import com.tsu.hitselka.model.setFullscreen
 
-class GiftActivity : AppCompatActivity(R.layout.activity_gift) {
-    private val binding by lazy { ActivityGiftBinding.inflate(layoutInflater) }
-    private val viewModel by viewModels<GiftViewModel>()
+class ChestActivity : AppCompatActivity(R.layout.activity_chest) {
+    private val binding by lazy { ActivityChestBinding.inflate(layoutInflater) }
+    private val viewModel by viewModels<ChestViewModel>()
     private val adapter = RewardAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        val intent = intent
-        val gift = intent.getParcelableExtra<GiftInfo>("Gift")
-        if (gift == null) {
-            finish()
-            return
-        }
-
-        val image = when (gift.gift.type) {
-            "special" -> R.drawable.special_gift
-            "fairytale" -> R.drawable.fairytale_gift
-            else -> R.drawable.bright_gift
-        }
-        binding.giftImageView.setImageResource(image)
-
         binding.closeButton.setOnClickListener {
             finish()
         }
 
         binding.openButton.setOnClickListener {
-            viewModel.openGifts(gift)
+            val stats = GameData.getStats() ?: return@setOnClickListener
+            viewModel.openChest(stats.chestLastOpened)
         }
 
         binding.recyclerView.adapter = adapter

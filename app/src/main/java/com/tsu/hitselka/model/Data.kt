@@ -17,6 +17,7 @@ data class Stats(
     val currentLevelWandsUsed: Long = 0,
     val objectsBuilt: Long = 0,
     val wandsUsed: Long = 0,
+    var chestLastOpened: Long? = null,
 )
 
 data class Resources(
