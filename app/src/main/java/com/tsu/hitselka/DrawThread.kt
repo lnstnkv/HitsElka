@@ -21,6 +21,9 @@ internal class DrawThread(private val surfaceHolder: SurfaceHolder, resources: R
     private val university: Bitmap = BitmapFactory.decodeResource(
         resources, R.drawable.university
     )
+    private val forest: Bitmap = BitmapFactory.decodeResource(
+        resources, R.drawable.forest
+    )
 
     fun setRunning(run: Boolean) {
         runFlag = run
@@ -34,10 +37,11 @@ internal class DrawThread(private val surfaceHolder: SurfaceHolder, resources: R
                 // получаем объект Canvas и выполняем отрисовку
                 canvas = surfaceHolder.lockCanvas(null)
                 synchronized(surfaceHolder) {
-                    canvas.drawBitmap(hedgehog, 1100f, 780f, null)
-                    canvas.drawBitmap(fatherFrost, 720f, 390f, null)
-                    canvas.drawBitmap(winterMaiden, 1200f, 480f, null)
-                    canvas.drawBitmap(university, 960f, 140f, null)
+                    canvas.drawBitmap(hedgehog, 880f, 750f, null)
+                    canvas.drawBitmap(fatherFrost, 580f, 450f, null)
+                    canvas.drawBitmap(winterMaiden, 1050f, 480f, null)
+                    canvas.drawBitmap(university, 851f, 154f, null)
+                    canvas.drawBitmap(forest, 1250f, 260f, null)
                     surfaceHolder.unlockCanvasAndPost(canvas)
                 }
             } finally {

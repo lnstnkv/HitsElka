@@ -39,11 +39,6 @@
             android:name=".LoginActivity"
             android:exported="true"
             android:screenOrientation="landscape">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activity_record_book.RecordBookActivity"
@@ -52,7 +47,13 @@
         <activity
             android:name=".activity_game.GameActivity"
             android:exported="true"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape" >
+            <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
     </application>
 
 </manifest>
