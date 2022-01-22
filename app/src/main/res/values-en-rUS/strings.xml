@@ -28,4 +28,6 @@
     <string name="locked">Upgrade stage %1$d</string>
     <string name="shop">Shop</string>
     <string name="cup">Cup</string>
+    <string name="gift">Gift</string>
+    <string name="your_reward">Your award:</string>
 </resources>

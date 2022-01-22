@@ -27,4 +27,8 @@
     <string name="upgraded">Улучшено!</string>
     <string name="locked">Улучшите стадию %1$d</string>
     <string name="cup">Кубок</string>
+    <string name="gift">Подарок</string>
+    <string name="your_reward">Ваша награда:</string>
+    <string name="giftsCount" translatable="false">x%1$d</string>
+    <string name="giftsReward" translatable="false">%1$d - %2$d</string>
 </resources>

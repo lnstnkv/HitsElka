@@ -5,4 +5,5 @@
     <dimen name="object_progress_width">124dp</dimen>
     <dimen name="midterms_progress_width">300dp</dimen>
     <dimen name="level_progress_width">76dp</dimen>
+    <dimen name="gift_progress_width">144dp</dimen>
 </resources>

@@ -54,15 +54,27 @@ data class Settings(
 data class Gifts(
     val bright: Gift = Gift(type = "bright"),
     val special: Gift = Gift(type = "special"),
-    val fairytale: Gift = Gift(type= "gifts"),
+    val fairytale: Gift = Gift(type = "gifts"),
 )
 
+@Parcelize
 data class Gift(
     val type: String = "bright",
     val level: Int = 1,
     val giftsOpened: Int = 0,
     val gifts: Int = 1,
-)
+) : Parcelable
+
+@Parcelize
+data class GiftInfo(
+    val gift: Gift = Gift(),
+    val minFirstReward: Int = 0,
+    val maxFirstReward: Int = 0,
+    val minSecondReward: Int = 0,
+    val maxSecondReward: Int = 0,
+    val minThirdReward: Int = 0,
+    val maxThirdReward: Int = 0,
+) : Parcelable
 
 @Parcelize
 data class Object(
@@ -78,12 +90,12 @@ data class Object(
 ) : Parcelable
 
 data class ItemShop(
-    val name:String,
-    val image:Int,
-    val cost:Int
+    val name: String,
+    val image: Int,
+    val cost: Int
 )
 
 data class Inventory(
-    val image:Int,
-    val count:Int
+    val image: Int,
+    var count: Int
 )

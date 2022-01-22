@@ -1,6 +1,7 @@
 package com.tsu.hitselka.activity_gifts.model
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,22 +12,22 @@ import com.tsu.hitselka.R
 import com.tsu.hitselka.databinding.ItemBrightGiftBinding
 import com.tsu.hitselka.databinding.ItemFairytaleGiftBinding
 import com.tsu.hitselka.databinding.ItemSpecialGiftBinding
-import com.tsu.hitselka.model.Gift
+import com.tsu.hitselka.model.GiftInfo
 
 class GiftsRecycler(
     private val context: Context,
     private val openClickListener: OpenClickListener
 ) :
-    ListAdapter<Gift, RecyclerView.ViewHolder>(DIFF) {
+    ListAdapter<GiftInfo, RecyclerView.ViewHolder>(DIFF) {
 
     private companion object {
         const val BRIGHT = R.layout.item_bright_gift
         const val SPECIAL = R.layout.item_special_gift
         const val FAIRYTALE = R.layout.item_fairytale_gift
 
-        val DIFF = object : DiffUtil.ItemCallback<Gift>() {
-            override fun areItemsTheSame(oldItem: Gift, newItem: Gift) = oldItem == newItem
-            override fun areContentsTheSame(oldItem: Gift, newItem: Gift) = oldItem == newItem
+        val DIFF = object : DiffUtil.ItemCallback<GiftInfo>() {
+            override fun areItemsTheSame(oldItem: GiftInfo, newItem: GiftInfo) = oldItem == newItem
+            override fun areContentsTheSame(oldItem: GiftInfo, newItem: GiftInfo) = oldItem == newItem
         }
     }
 
@@ -39,9 +40,24 @@ class GiftsRecycler(
             }
         }
 
-        fun bind(gift: Gift) = with(binding) {
-            levelTextView.text = context.resources.getString(R.string.level, gift.level)
-            countTextView.text = "x${gift.gifts}"
+        fun bind(gift: GiftInfo) = with(binding) {
+            if (gift.gift.gifts == 0) {
+                openButton.isClickable = false
+            }
+
+            firstAwardTextView.text = context.resources.getString(R.string.giftsReward, gift.minFirstReward, gift.maxFirstReward)
+            secondAwardTextView.text = context.resources.getString(R.string.giftsReward, gift.minSecondReward, gift.maxSecondReward)
+            thirdAwardTextView.text = context.resources.getString(R.string.giftsReward, gift.minThirdReward, gift.maxThirdReward)
+
+            levelTextView.text = context.resources.getString(R.string.level, gift.gift.level)
+            countTextView.text = context.resources.getString(R.string.giftsCount, gift.gift.gifts)
+
+            val progress = gift.gift.giftsOpened
+            val width = getWidth(progress)
+            if (width > 0) {
+                progressView.visibility = View.VISIBLE
+                progressView.layoutParams.width = width
+            }
         }
     }
 
@@ -54,9 +70,24 @@ class GiftsRecycler(
             }
         }
 
-        fun bind(gift: Gift) = with(binding) {
-            levelTextView.text = context.resources.getString(R.string.level, gift.level)
-            countTextView.text = "x${gift.gifts}"
+        fun bind(gift: GiftInfo) = with(binding) {
+            if (gift.gift.gifts == 0) {
+                openButton.isClickable = false
+            }
+
+            firstAwardTextView.text = context.resources.getString(R.string.giftsReward, gift.minFirstReward, gift.maxFirstReward)
+            secondAwardTextView.text = context.resources.getString(R.string.giftsReward, gift.minSecondReward, gift.maxSecondReward)
+            thirdAwardTextView.text = context.resources.getString(R.string.giftsReward, gift.minThirdReward, gift.maxThirdReward)
+
+            levelTextView.text = context.resources.getString(R.string.level, gift.gift.level)
+            countTextView.text = context.resources.getString(R.string.giftsCount, gift.gift.gifts)
+
+            val progress = gift.gift.giftsOpened * 10
+            val width = getWidth(progress)
+            if (width > 0) {
+                progressView.visibility = View.VISIBLE
+                progressView.layoutParams.width = width
+            }
         }
     }
 
@@ -69,9 +100,24 @@ class GiftsRecycler(
             }
         }
 
-        fun bind(gift: Gift) = with(binding) {
-            levelTextView.text = context.resources.getString(R.string.level, gift.level)
-            countTextView.text = "x${gift.gifts}"
+        fun bind(gift: GiftInfo) = with(binding) {
+            if (gift.gift.gifts == 0) {
+                openButton.isClickable = false
+            }
+
+            firstAwardTextView.text = context.resources.getString(R.string.giftsReward, gift.minFirstReward, gift.maxFirstReward)
+            secondAwardTextView.text = context.resources.getString(R.string.giftsReward, gift.minSecondReward, gift.maxSecondReward)
+            thirdAwardTextView.text = context.resources.getString(R.string.giftsReward, gift.minThirdReward, gift.maxThirdReward)
+
+            levelTextView.text = context.resources.getString(R.string.level, gift.gift.level)
+            countTextView.text = context.resources.getString(R.string.giftsCount, gift.gift.gifts)
+
+            val progress = gift.gift.giftsOpened * 50
+            val width = getWidth(progress)
+            if (width > 0) {
+                progressView.visibility = View.VISIBLE
+                progressView.layoutParams.width = width
+            }
         }
     }
 
@@ -94,7 +140,7 @@ class GiftsRecycler(
     }
 
     override fun getItemViewType(position: Int): Int {
-        return when (getItem(position).type) {
+        return when (getItem(position).gift.type) {
             "special" -> SPECIAL
             "fairytale" -> FAIRYTALE
             else -> BRIGHT
@@ -102,6 +148,11 @@ class GiftsRecycler(
     }
 
     interface OpenClickListener {
-        fun onOpenClick(gift: Gift)
+        fun onOpenClick(gift: GiftInfo)
+    }
+
+    private fun getWidth(percentage: Int): Int {
+        val maxWidth = context.resources.getDimensionPixelSize(R.dimen.gift_progress_width)
+        return maxWidth * percentage / 100
     }
 }

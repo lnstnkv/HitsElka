@@ -18,7 +18,11 @@
         <activity
             android:name=".shop.ShopActivity"
             android:exported="true"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity_gift.GiftActivity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".activity_enhancement.EnhancementActivity"
             android:exported="false"

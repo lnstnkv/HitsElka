@@ -55,7 +55,7 @@ class EnhancementViewModel : ViewModel() {
         job = viewModelScope.launch {
             while (wandSpending) {
                 spendWand()
-                delay(75L)
+                delay(40L)
             }
         }
     }

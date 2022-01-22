@@ -81,7 +81,6 @@ object GameLogic {
                     }
 
                     if (building == "father_frost") {
-                        Log.d("MyTag", buildings.toString())
                         _buildings.value = buildings.sortedBy { it.level }
                     }
                 }
@@ -142,6 +141,16 @@ object GameLogic {
         buildings.child(item.type).child(stage).get().addOnSuccessListener {
             val newStats = BuildingStats(item.level, 0L, it.value as Long)
             playerBuildings.child(item.type).setValue(newStats)
+        }
+    }
+
+    fun giftOpened(gift: Gift, reward: List<Inventory>) {
+        val resources = GameData.getResources() ?: return
+
+        playerResources.child("wands").setValue(resources.wands + reward[0].count)
+        playerResources.child("moneys").setValue(resources.moneys + reward[1].count)
+        if (gift.type != "bright") {
+            playerResources.child("rubies").setValue(resources.rubies + reward[2].count)
         }
     }
 }
