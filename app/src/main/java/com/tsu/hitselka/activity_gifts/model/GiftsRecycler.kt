@@ -53,8 +53,8 @@ class GiftsRecycler(
             countTextView.text = context.resources.getString(R.string.giftsCount, gift.gift.gifts)
 
             val progress = gift.gift.giftsOpened
-            val width = getWidth(progress)
-            if (width > 0) {
+            if (progress >= 5) {
+                val width = getWidth(progress)
                 progressView.visibility = View.VISIBLE
                 progressView.layoutParams.width = width
             }
@@ -83,8 +83,8 @@ class GiftsRecycler(
             countTextView.text = context.resources.getString(R.string.giftsCount, gift.gift.gifts)
 
             val progress = gift.gift.giftsOpened * 10
-            val width = getWidth(progress)
-            if (width > 0) {
+            if (progress >= 5) {
+                val width = getWidth(progress)
                 progressView.visibility = View.VISIBLE
                 progressView.layoutParams.width = width
             }
@@ -113,8 +113,8 @@ class GiftsRecycler(
             countTextView.text = context.resources.getString(R.string.giftsCount, gift.gift.gifts)
 
             val progress = gift.gift.giftsOpened * 50
-            val width = getWidth(progress)
-            if (width > 0) {
+            if (progress >= 5) {
+                val width = getWidth(progress)
                 progressView.visibility = View.VISIBLE
                 progressView.layoutParams.width = width
             }

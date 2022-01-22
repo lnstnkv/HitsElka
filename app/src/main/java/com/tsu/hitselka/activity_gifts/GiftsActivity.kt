@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tsu.hitselka.R
 import com.tsu.hitselka.activity_chest.ChestActivity
+import com.tsu.hitselka.activity_gift.GiftActivity
 import com.tsu.hitselka.activity_gifts.model.GiftsRecycler
 import com.tsu.hitselka.databinding.ActivityGiftsBinding
 import com.tsu.hitselka.model.GameData
@@ -19,7 +20,7 @@ class GiftsActivity : AppCompatActivity(R.layout.activity_gifts) {
 
     private val giftOpenListener = object : GiftsRecycler.OpenClickListener {
         override fun onOpenClick(gift: GiftInfo) {
-            val intent = Intent(this@GiftsActivity, ChestActivity::class.java)
+            val intent = Intent(this@GiftsActivity, GiftActivity::class.java)
             intent.putExtra("Gift", gift)
             startActivity(intent)
         }
@@ -50,6 +51,12 @@ class GiftsActivity : AppCompatActivity(R.layout.activity_gifts) {
             gifts.add(getGiftInfo(it.special))
             gifts.add(getGiftInfo(it.fairytale))
             adapter.submitList(gifts)
+        }
+
+        GameData.resources.observe(this) { resources ->
+            binding.wandTextView.text = resources.wands.toString()
+            binding.moneyTextView.text = resources.moneys.toString()
+            binding.rubyTextView.text = resources.rubies.toString()
         }
     }
 
