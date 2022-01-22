@@ -2,11 +2,16 @@ package com.tsu.hitselka.inventory
 
 import android.content.ClipData
 import android.content.ClipDescription
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Point
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.DragEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -14,6 +19,7 @@ import androidx.recyclerview.widget.ItemTouchHelper.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tsu.hitselka.R
+import com.tsu.hitselka.SurfaceView
 import com.tsu.hitselka.databinding.ActivityInventoryBinding
 import com.tsu.hitselka.model.Inventory
 import com.tsu.hitselka.model.setFullscreen
@@ -31,56 +37,15 @@ class InventoryActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(binding.root)
+        setContentView(SurfaceView(this))
+        val lp = ViewGroup.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT
+        )
+        addContentView(binding.root,lp)
         initRecycler()
         setFullscreen()
-        //binding.rootDrag.setOnDragListener()
-        binding.imageView.setOnLongClickListener {
-            val cliptText="Thi is Clip Test"
-            val item= ClipData.Item(cliptText)
-            val mimeTypes= arrayOf(ClipDescription.MIMETYPE_TEXT_PLAIN)
-            val data=ClipData(cliptText,mimeTypes,item)
 
-            val dragShadowBuilder=View.DragShadowBuilder(it)
-            it.startDragAndDrop(data,dragShadowBuilder,it,0)
-            it.visibility=View.VISIBLE
-            true
-        }
-
-        val dragListener=View.OnDragListener { view, dragEvent ->
-            when(dragEvent.action){
-                DragEvent.ACTION_DRAG_STARTED->{
-                    dragEvent.clipDescription.hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)
-                }
-                DragEvent.ACTION_DRAG_ENTERED->{
-                    view.invalidate()
-                    true
-                }
-                DragEvent.ACTION_DRAG_LOCATION->true
-                DragEvent.ACTION_DRAG_EXITED->{
-                    view.invalidate()
-                    true
-                }
-                DragEvent.ACTION_DROP->{
-                    val item=dragEvent.clipData.getItemAt(0)
-                    val dragData=item.text
-                    Toast.makeText(this,dragData,Toast.LENGTH_LONG).show()
-                    view.invalidate()
-                    val v=dragEvent.localState as View
-                    val owner=v.parent as ViewGroup
-                    owner.removeView(v)
-                    val destination= view as ConstraintLayout
-                    destination.addView(v)
-                    v.visibility=View.VISIBLE
-                    true
-                }
-                DragEvent.ACTION_DRAG_ENDED->{
-                    view.invalidate()
-                    true
-                }
-                else->false
-            }
-        }
     }
 
 

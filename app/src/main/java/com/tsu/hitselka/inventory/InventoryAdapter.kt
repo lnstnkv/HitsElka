@@ -56,12 +56,6 @@ class InventoryAdapter: RecyclerView.Adapter<InventoryAdapter.ItemViewHolder>() 
         }
         differ.submitList(list)
     }
-    fun removeItem(fromPosition: Int) {
-        val list = differ.currentList.toMutableList()
-        val fromItem = list[fromPosition]
-        list.removeAt(fromPosition)
-        differ.submitList(list)
-    }
 
     inner class ItemViewHolder(val binding: ItemInventoryBinding) : RecyclerView.ViewHolder(binding.root) {
 

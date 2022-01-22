@@ -24,12 +24,12 @@ object SharedPrefs {
     }
 
     fun getUID(): String {
-        val instance = preferences ?: return ""
+        val instance = preferences ?: return "hIbnn9oQcAhwhgMlkZIyX65RCot2"
         var uid = instance.getString(UID_KEY, "")
         if (uid == null) {
             uid = Firebase.auth.currentUser?.uid ?: return ""
             saveUID(uid)
         }
-        return "hIbnn9oQcAhwhgMlkZIyX65RCot2"
+        return uid
     }
 }
