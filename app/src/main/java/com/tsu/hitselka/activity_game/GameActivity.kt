@@ -3,6 +3,7 @@ package com.tsu.hitselka.activity_game
 import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -26,6 +27,8 @@ import com.tsu.hitselka.model.GameData
 import com.tsu.hitselka.model.GameLogic
 import com.tsu.hitselka.shop.ShopActivity
 import java.util.*
+import kotlin.math.floor
+import kotlin.math.log10
 
 class GameActivity : AppCompatActivity(R.layout.controls) {
     private val binding by lazy { ActivityGameBinding.inflate(layoutInflater) }
@@ -62,12 +65,12 @@ class GameActivity : AppCompatActivity(R.layout.controls) {
 
     private fun initListeners() {
         controls.yearSelectorImageView.setOnClickListener {
-            Toast.makeText(this, "Year selector", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Скоро в игре", Toast.LENGTH_SHORT).show()
             playClickSound()
         }
 
         controls.achievementsImageView.setOnClickListener {
-            Toast.makeText(this, "Achievements", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Скоро в игре", Toast.LENGTH_SHORT).show()
             playClickSound()
         }
 
@@ -96,7 +99,7 @@ class GameActivity : AppCompatActivity(R.layout.controls) {
         }
 
         controls.playImageView.setOnClickListener {
-            Toast.makeText(this, "Play", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Скоро в игре", Toast.LENGTH_SHORT).show()
             playClickSound()
         }
         controls.inventoryImageView.setOnClickListener {
@@ -107,6 +110,21 @@ class GameActivity : AppCompatActivity(R.layout.controls) {
     }
 
     private fun initObservers() {
+        GameData.stats.observe(this) { stats ->
+            val coefficient = when {
+                stats.currentLevel % 100 == 99L -> 700
+                stats.currentLevel % 10 == 9L -> 400
+                else -> 100
+            }
+            val levelNeeded = floor(log10(stats.currentLevel.toDouble() + 1) * coefficient * (stats.currentLevel.div(10) + 1)).toLong()
+            val progress = stats.currentLevelWandsUsed * 100 / levelNeeded
+            val width = getLevelBarWidth(progress)
+            if (width > 0) {
+                controls.levelFillView.visibility = View.VISIBLE
+                controls.levelFillView.layoutParams.width = width
+            }
+        }
+
         viewModel.isRussian.observe(this) { state ->
             val locale = if (state) Locale("ru", "RU") else Locale.ENGLISH
             Locale.setDefault(locale)
@@ -195,5 +213,10 @@ class GameActivity : AppCompatActivity(R.layout.controls) {
         backgroundMusic.release()
         clickSound.release()
         super.onDestroy()
+    }
+
+    private fun getLevelBarWidth(percentage: Long): Int {
+        val maxWidth = resources.getDimensionPixelSize(R.dimen.level_progress_width)
+        return maxWidth * percentage.toInt() / 100
     }
 }
