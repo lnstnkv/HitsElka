@@ -25,7 +25,7 @@
             android:exported="true"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".activity_gift.GiftActivity"
+            android:name=".activity_chest.ChestActivity"
             android:exported="false"
             android:screenOrientation="landscape" />
         <activity
@@ -34,6 +34,10 @@
             android:screenOrientation="landscape" />
         <activity
             android:name=".activity_gifts.GiftsActivity"
+            android:exported="false"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".activity_gift.GiftActivity"
             android:exported="false"
             android:screenOrientation="landscape" />
         <activity

@@ -14,6 +14,7 @@ import com.google.firebase.ktx.Firebase
 import com.tsu.hitselka.R
 import com.tsu.hitselka.SettingsActivity
 import com.tsu.hitselka.SurfaceView
+import com.tsu.hitselka.activity_chest.ChestActivity
 import com.tsu.hitselka.activity_gifts.GiftsActivity
 import com.tsu.hitselka.databinding.ActivityGameBinding
 import com.tsu.hitselka.databinding.ControlsBinding
@@ -90,9 +91,8 @@ class GameActivity : AppCompatActivity(R.layout.controls) {
 
         controls.shopImageView.setOnClickListener {
             playClickSound()
-            val intent = Intent(this, ShopActivity::class.java)
+            val intent = Intent(this, ChestActivity::class.java)
             startActivity(intent)
-
         }
 
         controls.playImageView.setOnClickListener {

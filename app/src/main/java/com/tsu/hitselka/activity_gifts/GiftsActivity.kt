@@ -6,7 +6,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tsu.hitselka.R
-import com.tsu.hitselka.activity_gift.GiftActivity
+import com.tsu.hitselka.activity_chest.ChestActivity
 import com.tsu.hitselka.activity_gifts.model.GiftsRecycler
 import com.tsu.hitselka.databinding.ActivityGiftsBinding
 import com.tsu.hitselka.model.GameData
@@ -19,7 +19,7 @@ class GiftsActivity : AppCompatActivity(R.layout.activity_gifts) {
 
     private val giftOpenListener = object : GiftsRecycler.OpenClickListener {
         override fun onOpenClick(gift: GiftInfo) {
-            val intent = Intent(this@GiftsActivity, GiftActivity::class.java)
+            val intent = Intent(this@GiftsActivity, ChestActivity::class.java)
             intent.putExtra("Gift", gift)
             startActivity(intent)
         }
