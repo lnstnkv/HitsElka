@@ -41,11 +41,11 @@
             android:exported="false"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".SettingsActivity"
+            android:name=".activity_settings.SettingsActivity"
             android:exported="false"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".activity_login.LoginActivity"
             android:exported="true"
             android:screenOrientation="landscape">
         </activity>

@@ -1,4 +1,4 @@
-package com.tsu.hitselka
+package com.tsu.hitselka.activity_login
 
 import android.content.Intent
 import android.os.Bundle
@@ -15,7 +15,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.tsu.hitselka.activity_game.GameActivity
+import com.tsu.hitselka.R
 import com.tsu.hitselka.activity_video.VideoActivity
 import com.tsu.hitselka.databinding.ActivityLoginBinding
 import com.tsu.hitselka.model.SharedPrefs

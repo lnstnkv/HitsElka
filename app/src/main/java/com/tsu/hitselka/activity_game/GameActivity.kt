@@ -13,7 +13,7 @@ import com.bumptech.glide.request.target.Target
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.tsu.hitselka.R
-import com.tsu.hitselka.SettingsActivity
+import com.tsu.hitselka.activity_settings.SettingsActivity
 import com.tsu.hitselka.SurfaceView
 import com.tsu.hitselka.activity_chest.ChestActivity
 import com.tsu.hitselka.activity_gifts.GiftsActivity
@@ -25,7 +25,6 @@ import com.tsu.hitselka.model.setFullscreen
 import com.tsu.hitselka.activity_record_book.RecordBookActivity
 import com.tsu.hitselka.model.GameData
 import com.tsu.hitselka.model.GameLogic
-import com.tsu.hitselka.shop.ShopActivity
 import java.util.*
 import kotlin.math.floor
 import kotlin.math.log10
