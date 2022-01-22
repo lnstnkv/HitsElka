@@ -1,10 +1,11 @@
-package com.tsu.hitselka
+package com.tsu.hitselka.activity_game
 
 import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.view.SurfaceHolder
+import com.tsu.hitselka.R
 
 internal class DrawThread(private val surfaceHolder: SurfaceHolder, resources: Resources?) : Thread() {
     private var runFlag = false

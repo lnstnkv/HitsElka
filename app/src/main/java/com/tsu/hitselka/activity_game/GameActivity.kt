@@ -14,7 +14,6 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.tsu.hitselka.R
 import com.tsu.hitselka.activity_settings.SettingsActivity
-import com.tsu.hitselka.SurfaceView
 import com.tsu.hitselka.activity_chest.ChestActivity
 import com.tsu.hitselka.activity_gifts.GiftsActivity
 import com.tsu.hitselka.databinding.ActivityGameBinding
@@ -121,6 +120,8 @@ class GameActivity : AppCompatActivity(R.layout.controls) {
             if (width > 0) {
                 controls.levelFillView.visibility = View.VISIBLE
                 controls.levelFillView.layoutParams.width = width
+            } else {
+                controls.levelFillView.visibility = View.INVISIBLE
             }
         }
 

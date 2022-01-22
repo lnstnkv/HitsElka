@@ -1,26 +1,16 @@
 package com.tsu.hitselka.inventory
 
-import android.content.ClipData
-import android.content.ClipDescription
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Point
-import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.DragEvent
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.ItemTouchHelper.*
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tsu.hitselka.R
-import com.tsu.hitselka.SurfaceView
+import com.tsu.hitselka.activity_game.SurfaceView
 import com.tsu.hitselka.activity_record_book.ImprovementItemDecoration
+import com.tsu.hitselka.databinding.ActivityGameBinding
 import com.tsu.hitselka.databinding.ActivityInventoryBinding
 import com.tsu.hitselka.model.Inventory
 import com.tsu.hitselka.model.setFullscreen
@@ -28,6 +18,8 @@ import com.tsu.hitselka.model.setFullscreen
 class InventoryActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityInventoryBinding.inflate(layoutInflater) }
+    private val background by lazy { ActivityGameBinding.inflate(layoutInflater) }
+
     private val listener = object : InventoryAdapter.InventoryAdapterListener {
         override fun onItemClick(item: Inventory) {
             println()
@@ -42,12 +34,13 @@ class InventoryActivity : AppCompatActivity() {
             ViewGroup.LayoutParams.MATCH_PARENT,
             ViewGroup.LayoutParams.MATCH_PARENT
         )
+
+        addContentView(background.root,lp)
         addContentView(binding.root,lp)
+
         initRecycler()
         setFullscreen()
-
     }
-
 
     private fun initRecycler() {
         itemTouchHelper.attachToRecyclerView(binding.recyclerInventory)

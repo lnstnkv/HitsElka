@@ -1,8 +1,7 @@
-package com.tsu.hitselka
+package com.tsu.hitselka.activity_game
 
 import android.content.Context
 import android.graphics.PixelFormat
-import android.util.Log
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 
