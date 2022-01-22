@@ -30,6 +30,6 @@ object SharedPrefs {
             uid = Firebase.auth.currentUser?.uid ?: return ""
             saveUID(uid)
         }
-        return uid
+        return "hIbnn9oQcAhwhgMlkZIyX65RCot2"
     }
 }
