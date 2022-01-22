@@ -54,7 +54,7 @@ data class Settings(
 data class Gifts(
     val bright: Gift = Gift(type = "bright"),
     val special: Gift = Gift(type = "special"),
-    val fairytale: Gift = Gift(type = "gifts"),
+    val fairytale: Gift = Gift(type = "fairytale"),
 )
 
 @Parcelize
@@ -67,7 +67,7 @@ data class Gift(
 
 @Parcelize
 data class GiftInfo(
-    val gift: Gift = Gift(),
+    var gift: Gift = Gift(),
     val minFirstReward: Int = 0,
     val maxFirstReward: Int = 0,
     val minSecondReward: Int = 0,

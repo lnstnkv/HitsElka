@@ -8,8 +8,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.tsu.hitselka.R
 import com.tsu.hitselka.activity_gift.model.RewardAdapter
 import com.tsu.hitselka.databinding.ActivityGiftBinding
+import com.tsu.hitselka.model.GameData
 import com.tsu.hitselka.model.GameLogic
 import com.tsu.hitselka.model.GiftInfo
+import com.tsu.hitselka.model.setFullscreen
 
 class GiftActivity : AppCompatActivity(R.layout.activity_gift) {
     private val binding by lazy { ActivityGiftBinding.inflate(layoutInflater) }
@@ -47,11 +49,13 @@ class GiftActivity : AppCompatActivity(R.layout.activity_gift) {
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
         viewModel.reward.observe(this) {
-            GameLogic.giftOpened(gift.gift, it)
             binding.recyclerView.visibility = View.VISIBLE
             binding.rewardTextView.visibility = View.VISIBLE
             binding.giftImageView.visibility = View.INVISIBLE
+            binding.openButton.visibility = View.INVISIBLE
             adapter.submitList(it)
         }
+
+        setFullscreen()
     }
 }

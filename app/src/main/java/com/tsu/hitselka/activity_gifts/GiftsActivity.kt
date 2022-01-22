@@ -2,6 +2,7 @@ package com.tsu.hitselka.activity_gifts
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tsu.hitselka.R
@@ -44,6 +45,7 @@ class GiftsActivity : AppCompatActivity(R.layout.activity_gifts) {
     private fun initObservers() {
         val gifts = mutableListOf<GiftInfo>()
         GameData.gifts.observe(this) {
+            Log.d("MyTag", it.toString())
             gifts.add(getGiftInfo(it.bright))
             gifts.add(getGiftInfo(it.special))
             gifts.add(getGiftInfo(it.fairytale))

@@ -26,7 +26,7 @@ class GiftsRecycler(
         const val FAIRYTALE = R.layout.item_fairytale_gift
 
         val DIFF = object : DiffUtil.ItemCallback<GiftInfo>() {
-            override fun areItemsTheSame(oldItem: GiftInfo, newItem: GiftInfo) = oldItem == newItem
+            override fun areItemsTheSame(oldItem: GiftInfo, newItem: GiftInfo) = oldItem.gift.type == newItem.gift.type
             override fun areContentsTheSame(oldItem: GiftInfo, newItem: GiftInfo) = oldItem == newItem
         }
     }

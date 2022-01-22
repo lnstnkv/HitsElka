@@ -1,9 +1,11 @@
 package com.tsu.hitselka.activity_gift
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.tsu.hitselka.R
+import com.tsu.hitselka.model.GameLogic
 import com.tsu.hitselka.model.GiftInfo
 import com.tsu.hitselka.model.Inventory
 import kotlin.math.min
@@ -33,10 +35,12 @@ class GiftViewModel : ViewModel() {
         }
 
         for (i in 0 until giftsToOpen) {
-            reward[0].count = Random.nextInt(gift.minFirstReward, gift.maxFirstReward)
-            reward[1].count = Random.nextInt(gift.minSecondReward, gift.maxSecondReward)
-            reward[2].count = Random.nextInt(gift.minThirdReward, gift.maxThirdReward)
-            _reward.value = reward
+            reward[0].count += Random.nextInt(gift.minFirstReward, gift.maxFirstReward)
+            reward[1].count += Random.nextInt(gift.minSecondReward, gift.maxSecondReward)
+            reward[2].count += Random.nextInt(gift.minThirdReward, gift.maxThirdReward)
         }
+        _reward.value = reward
+
+        GameLogic.giftOpened(gift.gift, giftsToOpen, reward)
     }
 }

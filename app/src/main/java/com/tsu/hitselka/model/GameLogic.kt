@@ -2,10 +2,7 @@ package com.tsu.hitselka.model
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.tsu.hitselka.R
@@ -21,6 +18,7 @@ object GameLogic {
     private val playerBuildings = player.child("firstYearStats")
     private val playerResources = player.child("resources")
     private val playerStats = player.child("stats")
+    private val playerGifts = player.child("gifts")
 
     private val objects = listOf("university", "forest", "hedgehog", "maiden", "father_frost")
     private const val OBJECTS_COUNT = 35
@@ -123,6 +121,8 @@ object GameLogic {
 
     fun newLevel() {
         val oldStats = GameData.getStats() ?: return
+        val gifts = GameData.getGifts() ?: return
+
         playerStats.setValue(
             Stats(
                 oldStats.currentLevel + 1,
@@ -131,11 +131,22 @@ object GameLogic {
                 oldStats.wandsUsed,
             )
         )
+
+        playerGifts.child("bright").child("gifts").setValue(gifts.bright.gifts + 1)
+        if (oldStats.currentLevel % 10 == 9L) {
+            playerGifts.child("special").child("gifts").setValue(gifts.special.gifts + 1)
+        }
+        if (oldStats.currentLevel % 100 == 99L) {
+            playerGifts.child("fairytale").child("gifts").setValue(gifts.fairytale.gifts + 1)
+        }
     }
 
     fun upgrade(item: Object) {
         val stats = GameData.getStats() ?: return
+        val gifts = GameData.getGifts() ?: return
+
         playerStats.child("objectsBuilt").setValue(stats.objectsBuilt + 1)
+        playerGifts.child("special").child("gifts").setValue(gifts.special.gifts + 2)
 
         val stage = "stage" + item.level.toString()
         buildings.child(item.type).child(stage).get().addOnSuccessListener {
@@ -144,13 +155,24 @@ object GameLogic {
         }
     }
 
-    fun giftOpened(gift: Gift, reward: List<Inventory>) {
+    fun giftOpened(gift: Gift, count: Int, reward: List<Inventory>) {
         val resources = GameData.getResources() ?: return
 
         playerResources.child("wands").setValue(resources.wands + reward[0].count)
         playerResources.child("moneys").setValue(resources.moneys + reward[1].count)
         if (gift.type != "bright") {
             playerResources.child("rubies").setValue(resources.rubies + reward[2].count)
+        }
+
+        playerGifts.child(gift.type).child("gifts").setValue(gift.gifts - count)
+
+        if ((gift.giftsOpened + count == 100 && gift.type == "bright") ||
+            (gift.giftsOpened + count == 10 && gift.type == "special") ||
+            (gift.giftsOpened + count == 2 && gift.type == "fairytale")) {
+            playerGifts.child(gift.type).child("giftsOpened").setValue(0)
+            playerGifts.child(gift.type).child("level").setValue(gift.level + 1)
+        } else {
+            playerGifts.child(gift.type).child("giftsOpened").setValue(gift.giftsOpened + count)
         }
     }
 }

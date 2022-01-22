@@ -64,7 +64,7 @@ object GameData {
         }
 
         override fun onCancelled(error: DatabaseError) {
-
+            TODO("Not yet implemented")
         }
     }
 
@@ -74,5 +74,9 @@ object GameData {
 
     fun getResources(): Resources? {
         return _resources.value
+    }
+
+    fun getGifts(): Gifts? {
+        return _gifts.value
     }
 }
