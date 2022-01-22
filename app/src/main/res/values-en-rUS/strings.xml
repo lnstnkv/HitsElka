@@ -30,4 +30,5 @@
     <string name="cup">Cup</string>
     <string name="gift">Gift</string>
     <string name="your_reward">Your award:</string>
+    <string name="login">Login with Google</string>
 </resources>

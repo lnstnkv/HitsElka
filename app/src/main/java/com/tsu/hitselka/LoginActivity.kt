@@ -3,6 +3,7 @@ package com.tsu.hitselka
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -26,11 +27,11 @@ class LoginActivity : AppCompatActivity(R.layout.activity_login) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(binding.root)
 
         auth = Firebase.auth
         SharedPrefs.init(this)
         checkLoginState()
-        setContentView(binding.root)
         setFullscreen()
 
         launcher =
@@ -85,6 +86,8 @@ class LoginActivity : AppCompatActivity(R.layout.activity_login) {
         if (auth.currentUser != null) {
             val intent = Intent(this, GameActivity::class.java)
             startActivity(intent)
+        } else {
+            binding.signInButton.visibility = View.VISIBLE
         }
     }
 
