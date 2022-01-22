@@ -13,13 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HitsElka">
         <activity
-            android:name=".activity_video.VideoActivity"
-            android:exported="false"
-            android:screenOrientation="landscape" />
-        <activity
             android:name=".inventory.InventoryActivity"
-            android:exported="true"
-            android:screenOrientation="landscape" />
+            android:exported="true" />
         <activity
             android:name=".shop.ShopActivity"
             android:exported="true"
